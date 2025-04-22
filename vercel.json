@@ -1,8 +1,6 @@
 {
-  "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/voguevault/$1"
-    }
-  ]
+  "buildCommand": "cd voguevault && npm run build",
+  "outputDirectory": "voguevault/.next",
+  "installCommand": "cd voguevault && npm install",
+  "framework": "nextjs"
 }
