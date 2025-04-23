@@ -80,7 +80,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head />
+      <head>
+        <meta name="google-adsense-account" content="ca-pub-2153737377331924" />
+      </head>
 
       <body
         className={`${inter.variable} ${robotoMono.variable} ${playfairDisplay.variable} antialiased min-h-screen flex flex-col`}
