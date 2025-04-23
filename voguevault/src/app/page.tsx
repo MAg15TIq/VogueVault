@@ -1,5 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
+import Script from "next/script";
+import Head from "next/head";
 
 // Mock data for featured articles
 const featuredArticles = [
@@ -75,7 +77,13 @@ const latestArticles = [
 
 export default function Home() {
   return (
-    <div className="container mx-auto px-4 py-8">
+    <>
+      <Script id="google-adsense-verification" strategy="beforeInteractive">
+        {`
+          <meta name="google-adsense-account" content="ca-pub-2153737377331924">
+        `}
+      </Script>
+      <div className="container mx-auto px-4 py-8">
       {/* Hero Section */}
       <section className="mb-16">
         <div className="relative rounded-xl overflow-hidden h-[500px] w-full">
@@ -236,5 +244,6 @@ export default function Home() {
         </div>
       </section>
     </div>
+    </>
   );
 }
