@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Roboto_Mono, Playfair_Display } from "next/font/google";
 import "./globals.css";
+import Script from "next/script";
 
 // Import layout components
 import Header from "../components/layout/Header";
@@ -59,6 +60,9 @@ export const metadata: Metadata = {
     description: "Your premier destination for fashion trends, lifestyle tips, and cultural insights.",
     images: ["/images/og-image.jpg"],
   },
+  other: {
+    'google-adsense-account': 'ca-pub-2153737377331924',
+  },
 };
 
 export const viewport: Viewport = {
@@ -76,9 +80,19 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head />
+
       <body
         className={`${inter.variable} ${robotoMono.variable} ${playfairDisplay.variable} antialiased min-h-screen flex flex-col`}
       >
+        {/* AdSense Verification Code */}
+        <Script
+          id="google-adsense-verification"
+          strategy="afterInteractive"
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2153737377331924"
+          crossOrigin="anonymous"
+        />
         <ClientLayout>
           <Header />
           <main className="flex-grow pb-16 md:pb-0">
