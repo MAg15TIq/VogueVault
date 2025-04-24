@@ -82,6 +82,13 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         <meta name="google-adsense-account" content="ca-pub-2153737377331924" />
+        {/* Google AdSense Verification Code - Exact code from screenshot */}
+        <script dangerouslySetInnerHTML={{
+          __html: `
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2153737377331924"
+            crossorigin="anonymous"></script>
+          `
+        }} />
       </head>
 
       <body
@@ -90,7 +97,7 @@ export default function RootLayout({
         {/* Google AdSense Script */}
         <Script
           id="google-adsense"
-          strategy="afterInteractive"
+          strategy="beforeInteractive"
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2153737377331924"
           crossOrigin="anonymous"

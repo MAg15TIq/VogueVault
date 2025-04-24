@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+Allow: /google-adsense.html
+Allow: /adsense-verification.html
+
+Sitemap: https://voguevaults.store/sitemap.xml
