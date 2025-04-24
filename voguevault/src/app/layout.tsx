@@ -87,9 +87,9 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${robotoMono.variable} ${playfairDisplay.variable} antialiased min-h-screen flex flex-col`}
       >
-        {/* AdSense Verification Code */}
+        {/* Google AdSense Script */}
         <Script
-          id="google-adsense-verification"
+          id="google-adsense"
           strategy="afterInteractive"
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2153737377331924"

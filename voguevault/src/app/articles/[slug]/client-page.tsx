@@ -10,6 +10,7 @@ import BookmarkButton from '@/components/features/BookmarkButton';
 import ReadingListButton from '@/components/features/ReadingListButton';
 import ShareButtons from '@/components/features/ShareButtons';
 import CommentSection from '@/components/features/CommentSection';
+import AdManager from '@/components/ads/AdManager';
 import { getReadingTime } from '@/utils/readingTime';
 import { updateReadingProgress } from '@/utils/readingList';
 import { articles } from '@/data/articles';
@@ -109,6 +110,11 @@ export default function ArticleClientPage({ slug }: { slug: string }) {
         {/* Table of Contents - Desktop */}
         <div className="hidden lg:block">
           <TableOfContents contentRef={contentRef} sticky />
+
+          {/* Sidebar Ad */}
+          <div className="mt-8">
+            <AdManager type="sidebar" />
+          </div>
         </div>
 
         {/* Article Content */}
@@ -119,7 +125,16 @@ export default function ArticleClientPage({ slug }: { slug: string }) {
               <TableOfContents contentRef={contentRef} sticky={false} />
             </div>
 
+            {/* Top Ad */}
+            <AdManager type="horizontal" />
+
             <div dangerouslySetInnerHTML={{ __html: article.content }} />
+
+            {/* Middle Ad */}
+            <AdManager type="in-article" />
+
+            {/* Bottom Ad */}
+            <AdManager type="article" />
           </div>
 
           {/* Article Footer */}
@@ -161,6 +176,12 @@ export default function ArticleClientPage({ slug }: { slug: string }) {
       {relatedArticles.length > 0 && (
         <section className="mt-16">
           <h2 className="text-2xl font-bold mb-8">Related Articles</h2>
+
+          {/* Related Articles Ad */}
+          <div className="mb-8">
+            <AdManager type="horizontal" />
+          </div>
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {relatedArticles.map((relatedArticle) => (
               <div key={relatedArticle.id} className="rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow card-hover">

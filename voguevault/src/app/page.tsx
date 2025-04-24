@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Script from "next/script";
 import Head from "next/head";
+import AdManager from "@/components/ads/AdManager";
 
 // Mock data for featured articles
 const featuredArticles = [
@@ -120,6 +121,11 @@ export default function Home() {
             View All
           </Link>
         </div>
+
+        {/* Ad before featured articles */}
+        <div className="mb-8">
+          <AdManager type="horizontal" />
+        </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {featuredArticles.map((article) => (
             <div key={article.id} className="rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow">
@@ -180,6 +186,11 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Ad Section */}
+      <section className="mb-16">
+        <AdManager type="article" />
+      </section>
+
       {/* Latest Articles Section */}
       <section className="mb-16">
         <div className="flex justify-between items-center mb-8">
@@ -220,6 +231,11 @@ export default function Home() {
             </div>
           ))}
         </div>
+      </section>
+
+      {/* Additional Ad Section */}
+      <section className="mb-16">
+        <AdManager type="vertical" />
       </section>
 
       {/* Newsletter Section */}

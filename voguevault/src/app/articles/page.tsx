@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import Breadcrumbs from '@/components/ui/Breadcrumbs';
 import OptimizedImage from '@/components/ui/OptimizedImage';
+import AdManager from '@/components/ads/AdManager';
 import { getReadingTime } from '@/utils/readingTime';
 import { articlesData } from '@/data/articlesData';
 
@@ -140,6 +141,11 @@ export default function ArticlesPage() {
         </div>
       </div>
 
+      {/* Ad before articles */}
+      <div className="mb-8">
+        <AdManager type="horizontal" />
+      </div>
+
       {/* Articles Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {filteredArticles.length > 0 ? (
@@ -216,6 +222,11 @@ export default function ArticlesPage() {
             </button>
           </div>
         )}
+      </div>
+
+      {/* Ad after articles */}
+      <div className="mt-8 mb-8">
+        <AdManager type="article" />
       </div>
 
       {/* Results Count */}
