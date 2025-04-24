@@ -117,6 +117,8 @@ const MobileNavigation = () => {
 
   // Check if a navigation item is active
   const isActive = (href: string) => {
+    if (!pathname) return href === '/';
+
     if (href === '/') {
       return pathname === '/';
     }

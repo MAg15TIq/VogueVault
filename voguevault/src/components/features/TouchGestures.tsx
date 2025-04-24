@@ -33,7 +33,7 @@ const TouchGestures = ({
       if (!enableSwipeNavigation) return;
 
       // Handle swipe left (next article)
-      if (pathname.startsWith('/articles/')) {
+      if (pathname && pathname.startsWith('/articles/')) {
         const slug = pathname.split('/').pop();
         const currentArticleIndex = articles.findIndex(article => article.slug === slug);
 
@@ -47,7 +47,7 @@ const TouchGestures = ({
       if (!enableSwipeNavigation) return;
 
       // Handle swipe right (previous article)
-      if (pathname.startsWith('/articles/')) {
+      if (pathname && pathname.startsWith('/articles/')) {
         const slug = pathname.split('/').pop();
         const currentArticleIndex = articles.findIndex(article => article.slug === slug);
 
