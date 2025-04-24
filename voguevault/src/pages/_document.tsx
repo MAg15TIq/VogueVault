@@ -5,20 +5,7 @@ export default function Document() {
     <Html lang="en">
       <Head>
         {/* Google AdSense Verification Code */}
-        <script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8215873816542659"
-          crossOrigin="anonymous"
-        />
-        {/* Inline AdSense verification code */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8215873816542659"
-              crossorigin="anonymous"></script>
-            `
-          }}
-        />
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8215873816542659" crossOrigin="anonymous"></script>
         {/* Grow by Mediavine Script */}
         <script
           data-grow-initializer=""
