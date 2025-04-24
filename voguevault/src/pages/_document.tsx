@@ -25,7 +25,8 @@ export default function Document() {
           }}
         />
         {/* Google Analytics Tag */}
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-630Q2457PQ" />
+        {/* Google tag (gtag.js) */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-630Q2457PQ"></script>
         <script
           dangerouslySetInnerHTML={{
             __html: `

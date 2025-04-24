@@ -100,17 +100,14 @@ export default function RootLayout({
           `
         }} />
         {/* Google Analytics Tag */}
+        {/* Google tag (gtag.js) */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-630Q2457PQ"></script>
         <script dangerouslySetInnerHTML={{
           __html: `
-            <!-- Google tag (gtag.js) -->
-            <script async src="https://www.googletagmanager.com/gtag/js?id=G-630Q2457PQ"></script>
-            <script>
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-
-              gtag('config', 'G-630Q2457PQ');
-            </script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-630Q2457PQ');
           `
         }} />
       </head>
