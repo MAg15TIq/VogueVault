@@ -103,13 +103,13 @@ export default function RootLayout({
         <script dangerouslySetInnerHTML={{
           __html: `
             <!-- Google tag (gtag.js) -->
-            <script async src="https://www.googletagmanager.com/gtag/js?id=G-20N2457PQ"></script>
+            <script async src="https://www.googletagmanager.com/gtag/js?id=G-630Q2457PQ"></script>
             <script>
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
 
-              gtag('config', 'G-20N2457PQ');
+              gtag('config', 'G-630Q2457PQ');
             </script>
           `
         }} />

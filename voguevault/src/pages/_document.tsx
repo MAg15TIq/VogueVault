@@ -25,14 +25,14 @@ export default function Document() {
           }}
         />
         {/* Google Analytics Tag */}
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-20N2457PQ" />
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-630Q2457PQ" />
         <script
           dangerouslySetInnerHTML={{
             __html: `
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
-              gtag('config', 'G-20N2457PQ');
+              gtag('config', 'G-630Q2457PQ');
             `
           }}
         />
