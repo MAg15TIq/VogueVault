@@ -8,14 +8,14 @@ export default function AdSenseVerification() {
     // Create and inject the AdSense verification script
     const script = document.createElement('script');
     script.async = true;
-    script.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2153737377331924';
+    script.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8215873816542659';
     script.crossOrigin = 'anonymous';
     document.head.appendChild(script);
 
     // Create and inject the meta tag
     const meta = document.createElement('meta');
     meta.name = 'google-adsense-account';
-    meta.content = 'ca-pub-2153737377331924';
+    meta.content = 'ca-pub-8215873816542659';
     document.head.appendChild(meta);
 
     return () => {
@@ -31,11 +31,11 @@ export default function AdSenseVerification() {
         id="google-adsense"
         strategy="afterInteractive"
         async
-        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2153737377331924"
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8215873816542659"
         crossOrigin="anonymous"
       />
       <div style={{ display: 'none' }}>
-        <meta name="google-adsense-account" content="ca-pub-2153737377331924" />
+        <meta name="google-adsense-account" content="ca-pub-8215873816542659" />
       </div>
     </>
   );

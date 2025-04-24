@@ -7,14 +7,14 @@ export default function Document() {
         {/* Google AdSense Verification Code */}
         <script
           async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2153737377331924"
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8215873816542659"
           crossOrigin="anonymous"
         />
         {/* Inline AdSense verification code */}
         <script
           dangerouslySetInnerHTML={{
             __html: `
-              <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2153737377331924"
+              <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8215873816542659"
               crossorigin="anonymous"></script>
             `
           }}

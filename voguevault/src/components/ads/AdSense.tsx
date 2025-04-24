@@ -22,7 +22,7 @@ const AdSense: React.FC<AdSenseProps> = ({
     // Add meta tag for verification
     const meta = document.createElement('meta');
     meta.name = 'google-adsense-account';
-    meta.content = 'ca-pub-2153737377331924';
+    meta.content = 'ca-pub-8215873816542659';
     document.head.appendChild(meta);
 
     try {
@@ -46,7 +46,7 @@ const AdSense: React.FC<AdSenseProps> = ({
         id="google-adsense-script"
         strategy="afterInteractive"
         async
-        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2153737377331924"
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8215873816542659"
         crossOrigin="anonymous"
         onLoad={() => {
           console.log('AdSense script loaded successfully');
@@ -56,7 +56,7 @@ const AdSense: React.FC<AdSenseProps> = ({
         <ins
           className="adsbygoogle"
           style={style}
-          data-ad-client="ca-pub-2153737377331924"
+          data-ad-client="ca-pub-8215873816542659"
           data-ad-slot={adSlot}
           data-ad-format={adFormat}
           data-full-width-responsive={fullWidthResponsive ? 'true' : 'false'}

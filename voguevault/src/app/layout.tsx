@@ -61,7 +61,7 @@ export const metadata: Metadata = {
     images: ["/images/og-image.jpg"],
   },
   other: {
-    'google-adsense-account': 'ca-pub-2153737377331924',
+    'google-adsense-account': 'ca-pub-8215873816542659',
   },
 };
 
@@ -81,11 +81,11 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <meta name="google-adsense-account" content="ca-pub-2153737377331924" />
+        <meta name="google-adsense-account" content="ca-pub-8215873816542659" />
         {/* Google AdSense Verification Code - Exact code from screenshot */}
         <script dangerouslySetInnerHTML={{
           __html: `
-            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2153737377331924"
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8215873816542659"
             crossorigin="anonymous"></script>
           `
         }} />
@@ -99,7 +99,7 @@ export default function RootLayout({
           id="google-adsense"
           strategy="beforeInteractive"
           async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2153737377331924"
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8215873816542659"
           crossOrigin="anonymous"
         />
         <ClientLayout>

@@ -81,10 +81,10 @@ export default function Home() {
     <>
       <Script id="google-adsense-verification" strategy="beforeInteractive">
         {`
-          <meta name="google-adsense-account" content="ca-pub-2153737377331924">
+          <meta name="google-adsense-account" content="ca-pub-8215873816542659">
         `}
       </Script>
-      <Script id="google-adsense" strategy="beforeInteractive" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2153737377331924" crossOrigin="anonymous" />
+      <Script id="google-adsense" strategy="beforeInteractive" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8215873816542659" crossOrigin="anonymous" />
       <div className="container mx-auto px-4 py-8">
       {/* Hero Section */}
       <section className="mb-16">
