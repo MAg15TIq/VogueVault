@@ -11,6 +11,7 @@ require('ts-node').register({
     module: 'commonjs',
     target: 'es2015',
     esModuleInterop: true,
+    moduleResolution: 'node',
   },
 });
 
