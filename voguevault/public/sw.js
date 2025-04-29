@@ -40,7 +40,7 @@ self.addEventListener('activate', (event) => {
 // Helper function to determine if a request should be cached
 const shouldCache = (url) => {
   const parsedUrl = new URL(url);
-  
+
   // Cache images
   if (
     url.match(/\.(jpg|jpeg|png|gif|webp|svg|ico)$/) ||
@@ -48,31 +48,39 @@ const shouldCache = (url) => {
   ) {
     return true;
   }
-  
+
   // Cache fonts
   if (url.match(/\.(woff|woff2|ttf|otf|eot)$/)) {
     return true;
   }
-  
+
   // Cache CSS and JS
   if (url.match(/\.(css|js)$/)) {
     return true;
   }
-  
+
   // Cache API responses (adjust based on your API structure)
   if (url.includes('/api/articles') || url.includes('/api/categories')) {
     return true;
   }
-  
-  // Don't cache analytics or tracking requests
+
+  // Don't cache analytics, tracking, or ad-related requests
   if (
     url.includes('analytics') ||
     url.includes('tracking') ||
-    url.includes('googletagmanager')
+    url.includes('googletagmanager') ||
+    url.includes('googlesyndication') ||
+    url.includes('googleads') ||
+    url.includes('doubleclick') ||
+    url.includes('adsense') ||
+    url.includes('adservice') ||
+    url.includes('pagead') ||
+    url.includes('grow.me') ||
+    url.includes('mediavine')
   ) {
     return false;
   }
-  
+
   return false;
 };
 
@@ -82,7 +90,7 @@ self.addEventListener('fetch', (event) => {
   if (!event.request.url.startsWith(self.location.origin)) {
     return;
   }
-  
+
   // Handle API requests with network-first strategy
   if (event.request.url.includes('/api/')) {
     event.respondWith(
@@ -90,12 +98,12 @@ self.addEventListener('fetch', (event) => {
         .then((response) => {
           // Clone the response to store in cache
           const responseToCache = response.clone();
-          
+
           caches.open(RUNTIME_CACHE)
             .then((cache) => {
               cache.put(event.request, responseToCache);
             });
-          
+
           return response;
         })
         .catch(() => {
@@ -105,7 +113,7 @@ self.addEventListener('fetch', (event) => {
     );
     return;
   }
-  
+
   // For HTML pages, use network-first strategy
   if (event.request.mode === 'navigate') {
     event.respondWith(
@@ -120,7 +128,7 @@ self.addEventListener('fetch', (event) => {
     );
     return;
   }
-  
+
   // For other requests, use cache-first strategy for cacheable resources
   if (shouldCache(event.request.url)) {
     event.respondWith(
@@ -129,29 +137,29 @@ self.addEventListener('fetch', (event) => {
           if (cachedResponse) {
             return cachedResponse;
           }
-          
+
           return fetch(event.request)
             .then((response) => {
               // Don't cache non-successful responses
               if (!response || response.status !== 200 || response.type !== 'basic') {
                 return response;
               }
-              
+
               // Clone the response to store in cache
               const responseToCache = response.clone();
-              
+
               caches.open(RUNTIME_CACHE)
                 .then((cache) => {
                   cache.put(event.request, responseToCache);
                 });
-              
+
               return response;
             });
         })
     );
     return;
   }
-  
+
   // For non-cacheable resources, just fetch from network
   event.respondWith(fetch(event.request));
 });

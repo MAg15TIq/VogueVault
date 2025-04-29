@@ -2,7 +2,7 @@
 
 import { useRef, useEffect } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
+import OptimizedImage from '@/components/ui/OptimizedImage';
 import Breadcrumbs from '@/components/ui/Breadcrumbs';
 import ReadingProgress from '@/components/ui/ReadingProgress';
 import TableOfContents from '@/components/ui/TableOfContents';
@@ -15,10 +15,10 @@ import AdManager from '@/components/ads/AdManager';
 import { ArticleStructuredData, BreadcrumbStructuredData } from '@/components/seo';
 import { getReadingTime } from '@/utils/readingTime';
 import { updateReadingProgress } from '@/utils/readingList';
-import { articles } from '@/data/articles';
+import { getArticleBySlug, getRelatedArticles } from '@/data/articleStore';
 
 export default function ArticleClientPage({ slug }: { slug: string }) {
-  const article = articles.find(article => article.slug === slug);
+  const article = getArticleBySlug(slug);
   const contentRef = useRef<HTMLDivElement>(null);
 
   if (!article) {
@@ -59,14 +59,8 @@ export default function ArticleClientPage({ slug }: { slug: string }) {
   // Calculate reading time
   const readingTime = getReadingTime(article.content);
 
-  // Get related articles - prioritize same category, then consider other factors
-  const sameCategory = articles.filter(a => a.category === article.category && a.id !== article.id);
-
-  // Get articles from other categories (as fallback if not enough from same category)
-  const otherCategories = articles.filter(a => a.category !== article.category && a.id !== article.id);
-
-  // Combine and limit to 4 articles
-  const relatedArticles = [...sameCategory, ...otherCategories].slice(0, 4);
+  // Get related articles using the helper function
+  const relatedArticles = getRelatedArticles(article, 4);
 
   // Create breadcrumb items for this article
   const breadcrumbItems = [
@@ -127,13 +121,14 @@ export default function ArticleClientPage({ slug }: { slug: string }) {
 
       {/* Featured Image */}
       <div className="relative w-full h-[400px] md:h-[500px] rounded-xl overflow-hidden mb-8">
-        <Image
+        <OptimizedImage
           src={article.image}
           alt={article.title}
           fill
           sizes="(max-width: 768px) 100vw, 1200px"
           priority
           className="object-cover"
+          quality={90}
         />
       </div>
 
@@ -238,11 +233,12 @@ export default function ArticleClientPage({ slug }: { slug: string }) {
                   className="bg-white dark:bg-neutral-800 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 flex flex-col h-full"
                 >
                   <div className="relative h-48 w-full overflow-hidden">
-                    <Image
+                    <OptimizedImage
                       src={relatedArticle.image}
                       alt={relatedArticle.title}
                       fill
                       className="object-cover transition-transform duration-500 hover:scale-105"
+                      quality={80}
                     />
                     <div className="absolute top-0 right-0 bg-primary text-white text-xs font-bold px-2 py-1 m-2 rounded">
                       {relatedArticle.category}

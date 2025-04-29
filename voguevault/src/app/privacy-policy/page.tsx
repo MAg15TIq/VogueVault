@@ -85,22 +85,58 @@ export default function PrivacyPolicyPage() {
 
           <h2 className="text-2xl font-bold mb-4 mt-8">6. Advertising</h2>
           <p>
-            We use Google AdSense to display advertisements on our website. Google AdSense may use cookies and web beacons to collect data about your visits to this and other websites in order to provide relevant advertisements about goods and services that may interest you.
+            We use Google AdSense and Grow by Mediavine to display advertisements on our website. These advertising services may use cookies, web beacons, and similar technologies to collect data about your visits to this and other websites in order to provide relevant advertisements about goods and services that may interest you.
+          </p>
+
+          <h3 className="text-xl font-bold mb-3 mt-6">6.1 Google AdSense</h3>
+          <p>
+            Google AdSense uses cookies (such as the DART cookie) which enables it to serve ads to you based on your visit to our site and other sites on the Internet. This allows us to show you ads that are relevant to your interests.
           </p>
           <p>
-            Google AdSense uses the DART cookie which enables it to serve ads to you based on your visit to our site and other sites on the Internet. You may opt out of the use of the DART cookie by visiting the Google ad and content network privacy policy at <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">https://policies.google.com/technologies/ads</a>.
+            The information collected by Google AdSense may include:
           </p>
+          <ul className="list-disc pl-6 mb-4">
+            <li>IP address</li>
+            <li>Browser type and settings</li>
+            <li>Device information</li>
+            <li>Page views and interactions</li>
+            <li>Geographic location (country or city level)</li>
+            <li>Previous browsing history</li>
+          </ul>
           <p>
             We have implemented Google AdSense features such as:
           </p>
-          <ul className="list-disc pl-6 mb-6">
+          <ul className="list-disc pl-6 mb-4">
             <li>Remarketing with Google AdSense</li>
             <li>Google Display Network Impression Reporting</li>
             <li>Demographics and Interests Reporting</li>
+            <li>Personalized ads</li>
           </ul>
           <p>
-            These features collect data using a cookie. You can opt out of Google's use of cookies by visiting <a href="https://adssettings.google.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Google's Ads Settings</a>.
+            You can opt out of personalized advertising by visiting <a href="https://adssettings.google.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Google's Ads Settings</a>. Alternatively, you can opt out of a third-party vendor's use of cookies for personalized advertising by visiting <a href="https://www.aboutads.info" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">www.aboutads.info</a>.
           </p>
+          <p>
+            For more information on how Google uses information from sites or apps that use their services, please visit <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">https://policies.google.com/technologies/partner-sites</a>.
+          </p>
+
+          <h3 className="text-xl font-bold mb-3 mt-6">6.2 Grow by Mediavine</h3>
+          <p>
+            We also use Grow by Mediavine on our website. Grow by Mediavine may collect information about your browsing habits and interests to provide personalized content and advertising.
+          </p>
+          <p>
+            For more information about Grow by Mediavine's privacy practices, please visit <a href="https://www.mediavine.com/privacy-policy/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">https://www.mediavine.com/privacy-policy/</a>.
+          </p>
+
+          <h3 className="text-xl font-bold mb-3 mt-6">6.3 Your Choices Regarding Advertising</h3>
+          <p>
+            You have several options to control or limit how we and our partners use information about you:
+          </p>
+          <ul className="list-disc pl-6 mb-4">
+            <li>You can use our cookie consent tool to manage your preferences</li>
+            <li>You can configure your browser to block all cookies or to indicate when a cookie is being set</li>
+            <li>You can use the opt-out tools mentioned above for Google and other advertising partners</li>
+            <li>You can visit the Network Advertising Initiative (<a href="https://www.networkadvertising.org" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">www.networkadvertising.org</a>) or the Digital Advertising Alliance (<a href="https://www.digitaladvertisingalliance.org" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">www.digitaladvertisingalliance.org</a>) to learn more about interest-based advertising and how to opt out</li>
+          </ul>
 
           <h2 className="text-2xl font-bold mb-4 mt-8">7. Third-Party Links</h2>
           <p>

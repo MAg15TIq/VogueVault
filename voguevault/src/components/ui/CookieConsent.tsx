@@ -25,23 +25,50 @@ const CookieConsent: React.FC<CookieConsentProps> = ({ className = '' }) => {
   const acceptAll = () => {
     localStorage.setItem('cookie-consent', 'all');
     setShowConsent(false);
-    
+
     // Enable Google Analytics and AdSense cookies
     window.gtag?.('consent', 'update', {
       'ad_storage': 'granted',
-      'analytics_storage': 'granted'
+      'analytics_storage': 'granted',
+      'personalization_storage': 'granted',
+      'functionality_storage': 'granted',
+      'security_storage': 'granted'
     });
+
+    // Notify AdSense that consent has been granted
+    // This helps ensure ads are properly personalized
+    try {
+      if (typeof window !== 'undefined' && window.adsbygoogle) {
+        // @ts-ignore - adsbygoogle is added by the external script
+        (window.adsbygoogle = window.adsbygoogle || []).requestNonPersonalizedAds = 0;
+      }
+    } catch (e) {
+      console.error('Error updating AdSense consent:', e);
+    }
   };
 
   const acceptNecessary = () => {
     localStorage.setItem('cookie-consent', 'necessary');
     setShowConsent(false);
-    
+
     // Disable Google Analytics and AdSense cookies
     window.gtag?.('consent', 'update', {
       'ad_storage': 'denied',
-      'analytics_storage': 'denied'
+      'analytics_storage': 'denied',
+      'personalization_storage': 'denied',
+      'functionality_storage': 'granted', // Necessary cookies still allowed
+      'security_storage': 'granted' // Security cookies still allowed
     });
+
+    // Notify AdSense to use non-personalized ads
+    try {
+      if (typeof window !== 'undefined' && window.adsbygoogle) {
+        // @ts-ignore - adsbygoogle is added by the external script
+        (window.adsbygoogle = window.adsbygoogle || []).requestNonPersonalizedAds = 1;
+      }
+    } catch (e) {
+      console.error('Error updating AdSense consent:', e);
+    }
   };
 
   const customizeSettings = () => {
@@ -59,7 +86,7 @@ const CookieConsent: React.FC<CookieConsentProps> = ({ className = '' }) => {
           <div className="flex-1">
             <h3 className="text-lg font-bold mb-2">We Value Your Privacy</h3>
             <p className="text-neutral-600 dark:text-neutral-300 text-sm mb-2">
-              We use cookies to enhance your browsing experience, serve personalized ads or content, and analyze our traffic. By clicking "Accept All", you consent to our use of cookies. 
+              We use cookies to enhance your browsing experience, serve personalized ads or content, and analyze our traffic. By clicking "Accept All", you consent to our use of cookies.
             </p>
             <p className="text-sm">
               <Link href="/privacy-policy" className="text-primary hover:underline">
@@ -99,5 +126,6 @@ export default CookieConsent;
 declare global {
   interface Window {
     gtag?: (command: string, action: string, config: any) => void;
+    adsbygoogle?: any[];
   }
 }

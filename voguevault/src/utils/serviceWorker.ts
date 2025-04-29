@@ -1,21 +1,36 @@
 /**
  * Service Worker Registration Utility
- * 
+ *
  * This utility handles the registration and management of the service worker
  * for caching and offline support.
  */
 
+/**
+ * Register the service worker for offline support
+ * This implementation is AdSense-friendly and excludes ad-related requests from caching
+ */
 export function registerServiceWorker() {
-  if (typeof window !== 'undefined' && 'serviceWorker' in navigator) {
+  // Don't register service worker if this is an ad-related domain or in an iframe
+  // This prevents interference with AdSense and other ad services
+  if (
+    typeof window !== 'undefined' &&
+    'serviceWorker' in navigator &&
+    !window.location.hostname.includes('googleusercontent') &&
+    window.self === window.top // Not in an iframe
+  ) {
+    // Wait until the page is fully loaded to avoid competing with ad resources
     window.addEventListener('load', () => {
-      navigator.serviceWorker
-        .register('/sw.js')
-        .then(registration => {
-          console.log('Service Worker registered with scope:', registration.scope);
-        })
-        .catch(error => {
-          console.error('Service Worker registration failed:', error);
-        });
+      // Delay service worker registration slightly to prioritize ad loading
+      setTimeout(() => {
+        navigator.serviceWorker
+          .register('/sw.js')
+          .then(registration => {
+            console.log('Service Worker registered with scope:', registration.scope);
+          })
+          .catch(error => {
+            console.error('Service Worker registration failed:', error);
+          });
+      }, 1000); // 1 second delay
     });
   }
 }

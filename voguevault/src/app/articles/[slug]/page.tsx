@@ -1,55 +1,47 @@
 import { notFound } from 'next/navigation';
-import { articles } from '@/data/articles';
-import { articlesData } from '@/data/articlesData';
+import { getArticleBySlug } from '@/data/articleStore';
 
 import ArticleClientPage from './client-page';
 
 // This is a dynamic route, so we need to generate metadata for each article
 export async function generateMetadata({ params }: { params: { slug: string } }) {
   const slug = params?.slug;
-  const article = articles.find(article => article.slug === slug);
-  const articleData = articlesData.find(article => article.slug === slug);
+  const article = getArticleBySlug(slug);
 
-  if (!article && !articleData) {
+  if (!article) {
     return {
       title: 'Article Not Found - VogueVault',
       description: 'The requested article could not be found.'
     };
   }
 
-  if (article) {
-    return {
-      title: `${article.title} - VogueVault`,
-      description: article.content.substring(0, 160).replace(/<[^>]*>/g, '') + '...',
-    };
-  } else if (articleData) {
-    return {
-      title: `${articleData.title} - VogueVault`,
-      description: articleData.excerpt || 'Read this article on VogueVault',
-    };
-  }
+  return {
+    title: `${article.title} - VogueVault`,
+    description: article.excerpt || article.content.substring(0, 160).replace(/<[^>]*>/g, '') + '...',
+    openGraph: {
+      title: article.title,
+      description: article.excerpt,
+      images: [
+        {
+          url: article.image.startsWith('http') ? article.image : `${process.env.NEXT_PUBLIC_BASE_URL || 'https://voguevault.com'}${article.image}`,
+          width: 1200,
+          height: 630,
+          alt: article.title,
+        }
+      ],
+      type: 'article',
+      publishedTime: article.publishDate,
+      authors: [article.author],
+      section: article.category
+    }
+  };
 }
 
 export default async function ArticlePage({ params }: { params: { slug: string } }) {
   const slug = params?.slug;
-  const article = articles.find(article => article.slug === slug);
-  const articleData = articlesData.find(article => article.slug === slug);
+  const article = getArticleBySlug(slug);
 
-  // If the article doesn't exist in the articles array but exists in articlesData,
-  // we need to create a temporary article with default content
-  if (!article && articleData) {
-    // Add the article to the articles array with default content
-    articles.push({
-      id: articleData.id,
-      title: articleData.title,
-      content: `<p>${articleData.excerpt || 'Article content coming soon.'}</p>`,
-      category: articleData.category,
-      author: articleData.author,
-      publishDate: articleData.publishDate,
-      image: articleData.image,
-      slug: articleData.slug
-    });
-  } else if (!article && !articleData) {
+  if (!article) {
     notFound();
   }
 

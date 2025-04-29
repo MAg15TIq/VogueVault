@@ -6,10 +6,10 @@ import Breadcrumbs from '@/components/ui/Breadcrumbs';
 import OptimizedImage from '@/components/ui/OptimizedImage';
 import AdManager from '@/components/ads/AdManager';
 import { getReadingTime } from '@/utils/readingTime';
-import { articlesData } from '@/data/articlesData';
+import { articlesMetadata, searchArticles } from '@/data/articleStore';
 
-// Use the shared articles data
-const articles = articlesData;
+// Use the metadata version of articles for better performance
+const articles = articlesMetadata;
 
 
 export default function ArticlesPage() {
@@ -35,11 +35,12 @@ export default function ArticlesPage() {
 
     // Apply search filter if there's a query
     if (searchQuery.trim()) {
-      const query = searchQuery.toLowerCase();
-      result = result.filter(article =>
-        article.title.toLowerCase().includes(query) ||
-        article.excerpt.toLowerCase().includes(query)
-      );
+      // Use the optimized search function from articleStore
+      const searchResults = searchArticles(searchQuery);
+      // Get the IDs of the search results
+      const searchResultIds = new Set(searchResults.map(article => article.id));
+      // Filter the current results to only include articles that match the search
+      result = result.filter(article => searchResultIds.has(article.id));
     }
 
     // Apply sorting
@@ -157,6 +158,8 @@ export default function ArticlesPage() {
                 alt={article.title}
                 fill
                 className="object-cover"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                quality={80}
               />
             </div>
             <div className="p-6">

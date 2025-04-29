@@ -2,48 +2,35 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import Breadcrumbs from '@/components/ui/Breadcrumbs';
-import { articlesData } from '@/data/articlesData';
+import { articlesMetadata, getArticlesByCategory } from '@/data/articleStore';
 
-// Mock category data - in a real application, this would come from a database
+// Category data
 const categories = [
   {
     name: "Fashion",
     slug: "fashion",
     description: "Explore the latest trends, designer collections, and style guides for every season.",
-    image: "/images/category-fashion.jpg"
+    image: "/images/categories/fashion.jpg"
   },
   {
     name: "Lifestyle",
     slug: "lifestyle",
     description: "Discover tips for mindful living, home decor, wellness practices, and personal growth.",
-    image: "/images/category-lifestyle.jpg"
+    image: "/images/categories/lifestyle.jpg"
   },
   {
     name: "Beauty",
     slug: "beauty",
     description: "Find beauty tips, product reviews, skincare routines, and makeup tutorials for all skin types.",
-    image: "/images/category-beauty.jpg"
+    image: "/images/categories/beauty.jpg"
   },
   {
     name: "Culture",
     slug: "culture",
     description: "Stay informed about art, music, literature, and cultural movements shaping our world.",
-    image: "/images/category-culture.jpg"
+    image: "/images/categories/culture.jpg"
   }
 ];
-
-// Use the articles from the shared data file
-// We'll create a simplified version for the category page that includes only the necessary fields
-const articles = articlesData.map(article => ({
-  id: article.id,
-  title: article.title,
-  excerpt: article.excerpt || '',
-  category: article.category,
-  image: article.image,
-  slug: article.slug,
-  publishDate: article.publishDate,
-  author: article.author
-}));
 
 // Generate metadata for each category page
 export async function generateMetadata({ params }: { params: { slug: string } }) {
@@ -71,10 +58,8 @@ export default async function CategoryPage({ params }: { params: { slug: string 
     notFound();
   }
 
-  // Filter articles by category
-  const categoryArticles = articles.filter(article =>
-    article.category.toLowerCase() === category.name.toLowerCase()
-  );
+  // Get articles for this category using the helper function
+  const categoryArticles = getArticlesByCategory(category.name);
 
   // Create breadcrumb items for this category
   const breadcrumbItems = [
@@ -118,6 +103,8 @@ export default async function CategoryPage({ params }: { params: { slug: string 
                   alt={article.title}
                   fill
                   className="object-cover"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  quality={80}
                 />
               </div>
               <div className="p-6">
@@ -177,10 +164,12 @@ export default async function CategoryPage({ params }: { params: { slug: string 
                 </div>
                 {/* Category image */}
                 <Image
-                  src={`/images/categories/${cat.slug}.jpg`}
+                  src={cat.image}
                   alt={cat.name}
                   fill
                   className="object-cover opacity-80 group-hover:opacity-100 transition-opacity"
+                  sizes="(max-width: 768px) 50vw, 33vw"
+                  quality={80}
                 />
               </Link>
             ))}

@@ -1,68 +1,47 @@
-import { articles } from '@/data/articles';
-import { articlesData } from '@/data/articlesData';
+import { articles, validateArticleData } from '@/data/articleStore';
 
 /**
- * Validates consistency between articles and articlesData
+ * Validates article data consistency using the unified data source
  * @returns Object containing validation results
  */
 export function validateArticles() {
   const errors: string[] = [];
   const warnings: string[] = [];
-  
-  // Check for ID mismatches
-  const articlesMap = new Map(articles.map(article => [article.slug, article]));
-  const articlesDataMap = new Map(articlesData.map(article => [article.slug, article]));
-  
-  // Check for articles that exist in both collections but have different IDs
-  for (const [slug, articleData] of articlesDataMap.entries()) {
-    const article = articlesMap.get(slug);
-    if (article && article.id !== articleData.id) {
-      errors.push(`ID mismatch for article "${slug}": articles.ts has ID ${article.id}, articlesData.ts has ID ${articleData.id}`);
-    }
+
+  // Use the built-in validation function from articleStore
+  const validation = validateArticleData();
+
+  if (!validation.valid) {
+    errors.push(...validation.errors);
   }
-  
-  // Check for duplicate IDs in articles.ts
-  const articleIds = articles.map(article => article.id);
-  const duplicateArticleIds = findDuplicates(articleIds);
-  if (duplicateArticleIds.length > 0) {
-    errors.push(`Duplicate IDs found in articles.ts: ${duplicateArticleIds.join(', ')}`);
+
+  // Additional checks can be added here if needed
+
+  // Check for articles without content
+  const articlesWithoutContent = articles.filter(article => !article.content || article.content.trim() === '');
+  if (articlesWithoutContent.length > 0) {
+    const slugs = articlesWithoutContent.map(a => a.slug).join(', ');
+    warnings.push(`Articles without content: ${slugs}`);
   }
-  
-  // Check for duplicate IDs in articlesData.ts
-  const articleDataIds = articlesData.map(article => article.id);
-  const duplicateArticleDataIds = findDuplicates(articleDataIds);
-  if (duplicateArticleDataIds.length > 0) {
-    errors.push(`Duplicate IDs found in articlesData.ts: ${duplicateArticleDataIds.join(', ')}`);
+
+  // Check for articles without images
+  const articlesWithoutImages = articles.filter(article => !article.image || article.image.trim() === '');
+  if (articlesWithoutImages.length > 0) {
+    const slugs = articlesWithoutImages.map(a => a.slug).join(', ');
+    warnings.push(`Articles without images: ${slugs}`);
   }
-  
-  // Check for duplicate slugs in articles.ts
-  const articleSlugs = articles.map(article => article.slug);
-  const duplicateArticleSlugs = findDuplicates(articleSlugs);
-  if (duplicateArticleSlugs.length > 0) {
-    errors.push(`Duplicate slugs found in articles.ts: ${duplicateArticleSlugs.join(', ')}`);
+
+  // Check for articles with very short content
+  const shortArticles = articles.filter(article => {
+    const textContent = article.content.replace(/<[^>]*>/g, '');
+    return textContent.length < 500; // Less than 500 characters is considered short
+  });
+
+  if (shortArticles.length > 0) {
+    const slugs = shortArticles.map(a => a.slug).join(', ');
+    warnings.push(`Articles with very short content (< 500 chars): ${slugs}`);
   }
-  
-  // Check for duplicate slugs in articlesData.ts
-  const articleDataSlugs = articlesData.map(article => article.slug);
-  const duplicateArticleDataSlugs = findDuplicates(articleDataSlugs);
-  if (duplicateArticleDataSlugs.length > 0) {
-    errors.push(`Duplicate slugs found in articlesData.ts: ${duplicateArticleDataSlugs.join(', ')}`);
-  }
-  
-  // Check for articles in articlesData.ts that don't exist in articles.ts
-  for (const [slug, articleData] of articlesDataMap.entries()) {
-    if (!articlesMap.has(slug)) {
-      warnings.push(`Article "${slug}" exists in articlesData.ts but not in articles.ts`);
-    }
-  }
-  
-  // Check for articles in articles.ts that don't exist in articlesData.ts
-  for (const [slug, article] of articlesMap.entries()) {
-    if (!articlesDataMap.has(slug)) {
-      warnings.push(`Article "${slug}" exists in articles.ts but not in articlesData.ts`);
-    }
-  }
-  
+
   return {
     isValid: errors.length === 0,
     errors,
@@ -79,7 +58,7 @@ export function validateArticles() {
 function findDuplicates<T>(array: T[]): T[] {
   const seen = new Set<T>();
   const duplicates = new Set<T>();
-  
+
   for (const item of array) {
     if (seen.has(item)) {
       duplicates.add(item);
@@ -87,6 +66,6 @@ function findDuplicates<T>(array: T[]): T[] {
       seen.add(item);
     }
   }
-  
+
   return Array.from(duplicates);
 }
