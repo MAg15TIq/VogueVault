@@ -37,6 +37,11 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
+                <Link href="/gallery" className="text-neutral-600 dark:text-neutral-300 hover:text-primary transition-colors">
+                  Gallery
+                </Link>
+              </li>
+              <li>
                 <Link href="/privacy-policy" className="text-neutral-600 dark:text-neutral-300 hover:text-primary transition-colors">
                   Privacy Policy
                 </Link>
@@ -44,6 +49,11 @@ const Footer = () => {
               <li>
                 <Link href="/terms-of-service" className="text-neutral-600 dark:text-neutral-300 hover:text-primary transition-colors">
                   Terms of Service
+                </Link>
+              </li>
+              <li>
+                <Link href="/faq" className="text-neutral-600 dark:text-neutral-300 hover:text-primary transition-colors">
+                  FAQ
                 </Link>
               </li>
             </ul>

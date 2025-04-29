@@ -10,6 +10,7 @@ import BookmarkButton from '@/components/features/BookmarkButton';
 import ReadingListButton from '@/components/features/ReadingListButton';
 import ShareButtons from '@/components/features/ShareButtons';
 import CommentSection from '@/components/features/CommentSection';
+import SocialProof from '@/components/features/SocialProof';
 import AdManager from '@/components/ads/AdManager';
 import { getReadingTime } from '@/utils/readingTime';
 import { updateReadingProgress } from '@/utils/readingList';
@@ -57,10 +58,14 @@ export default function ArticleClientPage({ slug }: { slug: string }) {
   // Calculate reading time
   const readingTime = getReadingTime(article.content);
 
-  // Get related articles (same category, excluding current article)
-  const relatedArticles = articles
-    .filter(a => a.category === article.category && a.id !== article.id)
-    .slice(0, 3);
+  // Get related articles - prioritize same category, then consider other factors
+  const sameCategory = articles.filter(a => a.category === article.category && a.id !== article.id);
+
+  // Get articles from other categories (as fallback if not enough from same category)
+  const otherCategories = articles.filter(a => a.category !== article.category && a.id !== article.id);
+
+  // Combine and limit to 4 articles
+  const relatedArticles = [...sameCategory, ...otherCategories].slice(0, 4);
 
   // Create breadcrumb items for this article
   const breadcrumbItems = [
@@ -114,6 +119,17 @@ export default function ArticleClientPage({ slug }: { slug: string }) {
           {/* Sidebar Ad */}
           <div className="mt-8">
             <AdManager type="sidebar" />
+          </div>
+
+          {/* Social Proof - Compact */}
+          <div className="mt-8">
+            <SocialProof
+              variant="compact"
+              showStats={true}
+              showTestimonials={true}
+              title=""
+              description=""
+            />
           </div>
         </div>
 
@@ -172,49 +188,80 @@ export default function ArticleClientPage({ slug }: { slug: string }) {
         <CommentSection articleId={article.id.toString()} />
       </div>
 
-      {/* Related Articles */}
+      {/* Enhanced Related Articles Section */}
       {relatedArticles.length > 0 && (
-        <section className="mt-16">
-          <h2 className="text-2xl font-bold mb-8">Related Articles</h2>
+        <section className="mt-16 bg-neutral-50 dark:bg-neutral-900 py-12 px-4 md:px-8 rounded-xl">
+          <div className="container mx-auto">
+            <div className="text-center mb-10">
+              <h2 className="text-3xl font-bold mb-3">You May Also Like</h2>
+              <p className="text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto">
+                Explore more articles similar to "{article.title}" that might interest you
+              </p>
+            </div>
 
-          {/* Related Articles Ad */}
-          <div className="mb-8">
-            <AdManager type="horizontal" />
-          </div>
+            {/* Related Articles Ad */}
+            <div className="mb-8">
+              <AdManager type="horizontal" />
+            </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {relatedArticles.map((relatedArticle) => (
-              <div key={relatedArticle.id} className="rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow card-hover">
-                <div className="relative h-48 w-full img-hover-zoom">
-                  <Image
-                    src={relatedArticle.image}
-                    alt={relatedArticle.title}
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-                <div className="p-6">
-                  <span className="text-sm text-primary font-medium">{relatedArticle.category}</span>
-                  <h3 className="text-xl font-bold mt-2 mb-3">
-                    <Link href={`/articles/${relatedArticle.slug}`} className="hover:text-primary transition-colors">
-                      {relatedArticle.title}
-                    </Link>
-                  </h3>
-                  <div className="flex justify-between items-center">
-                    <span className="text-sm text-neutral-500">{getReadingTime(relatedArticle.content.substring(0, 200))}</span>
-                    <Link
-                      href={`/articles/${relatedArticle.slug}`}
-                      className="text-primary hover:text-primary-dark font-medium inline-flex items-center btn-glow px-3 py-1 rounded-md"
-                    >
-                      Read More
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
-                        <path fillRule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
-                      </svg>
-                    </Link>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {relatedArticles.map((relatedArticle) => (
+                <div
+                  key={relatedArticle.id}
+                  className="bg-white dark:bg-neutral-800 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 flex flex-col h-full"
+                >
+                  <div className="relative h-48 w-full overflow-hidden">
+                    <Image
+                      src={relatedArticle.image}
+                      alt={relatedArticle.title}
+                      fill
+                      className="object-cover transition-transform duration-500 hover:scale-105"
+                    />
+                    <div className="absolute top-0 right-0 bg-primary text-white text-xs font-bold px-2 py-1 m-2 rounded">
+                      {relatedArticle.category}
+                    </div>
+                  </div>
+                  <div className="p-5 flex flex-col flex-grow">
+                    <h3 className="text-lg font-bold mb-2 line-clamp-2">
+                      <Link href={`/articles/${relatedArticle.slug}`} className="hover:text-primary transition-colors">
+                        {relatedArticle.title}
+                      </Link>
+                    </h3>
+                    <div className="text-sm text-neutral-600 dark:text-neutral-400 mb-3 flex items-center">
+                      <span className="mr-2">By {relatedArticle.author}</span>
+                      <span>•</span>
+                      <span className="ml-2">{getReadingTime(relatedArticle.content.substring(0, 200))}</span>
+                    </div>
+                    <div className="mt-auto pt-3">
+                      <Link
+                        href={`/articles/${relatedArticle.slug}`}
+                        className="text-primary hover:text-primary-dark font-medium inline-flex items-center group"
+                      >
+                        Read Article
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="h-5 w-5 ml-1 transform transition-transform group-hover:translate-x-1"
+                          viewBox="0 0 20 20"
+                          fill="currentColor"
+                        >
+                          <path fillRule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                        </svg>
+                      </Link>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
+
+            {/* View All Articles Button */}
+            <div className="text-center mt-10">
+              <Link
+                href={`/categories/${article.category.toLowerCase()}`}
+                className="bg-primary hover:bg-primary-dark text-white px-6 py-3 rounded-full font-medium transition-colors inline-block"
+              >
+                View All {article.category} Articles
+              </Link>
+            </div>
           </div>
         </section>
       )}
