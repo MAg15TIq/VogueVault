@@ -9,6 +9,12 @@ const nextConfig = {
       },
     ],
   },
+  // Configure experimental features
+  experimental: {
+    serverComponentsExternalPackages: [],
+  },
+  // Add output option
+  output: 'standalone',
 };
 
 module.exports = nextConfig;
