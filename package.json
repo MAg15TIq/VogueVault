@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "cd voguevault && npm run dev"
+    "dev": "cd voguevault && npm run dev",
+    "validate-articles": "cd voguevault && npm run validate-articles"
   }
 }
