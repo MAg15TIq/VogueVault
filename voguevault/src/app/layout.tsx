@@ -81,9 +81,34 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <meta name="google-adsense-account" content="ca-pub-8215873816542659" />
-        {/* Google AdSense Verification Code - Exact code from screenshot */}
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8215873816542659" crossOrigin="anonymous"></script>
+        {/* Google Analytics Tag with Consent Mode */}
+        {/* Google tag (gtag.js) */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-630Q2457PQ"></script>
+        <script dangerouslySetInnerHTML={{
+          __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            // Default consent to 'denied' until user provides consent
+            gtag('consent', 'default', {
+              'ad_storage': 'denied',
+              'analytics_storage': 'denied'
+            });
+
+            // Check if user has already given consent
+            const hasConsent = localStorage.getItem('cookie-consent');
+            if (hasConsent === 'all') {
+              gtag('consent', 'update', {
+                'ad_storage': 'granted',
+                'analytics_storage': 'granted'
+              });
+            }
+
+            gtag('config', 'G-630Q2457PQ');
+          `
+        }} />
+
         {/* Grow by Mediavine Script */}
         <script data-grow-initializer="" dangerouslySetInnerHTML={{
           __html: `
@@ -99,30 +124,11 @@ export default function RootLayout({
             })();
           `
         }} />
-        {/* Google Analytics Tag */}
-        {/* Google tag (gtag.js) */}
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-630Q2457PQ"></script>
-        <script dangerouslySetInnerHTML={{
-          __html: `
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-630Q2457PQ');
-          `
-        }} />
       </head>
 
       <body
         className={`${inter.variable} ${robotoMono.variable} ${playfairDisplay.variable} antialiased min-h-screen flex flex-col`}
       >
-        {/* Google AdSense Script */}
-        <Script
-          id="google-adsense"
-          strategy="beforeInteractive"
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8215873816542659"
-          crossOrigin="anonymous"
-        />
         <ClientLayout>
           <Header />
           <main className="flex-grow pb-16 md:pb-0">

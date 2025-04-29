@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import Script from "next/script";
 import AdManager from "@/components/ads/AdManager";
+import { WebsiteStructuredData } from "@/components/seo";
 
 // Mock data for featured articles
 const featuredArticles = [
@@ -78,12 +78,6 @@ const latestArticles = [
 export default function Home() {
   return (
     <>
-      <Script id="google-adsense-verification" strategy="beforeInteractive">
-        {`
-          <meta name="google-adsense-account" content="ca-pub-8215873816542659">
-        `}
-      </Script>
-      <Script id="google-adsense" strategy="beforeInteractive" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8215873816542659" crossOrigin="anonymous" />
       <div className="container mx-auto px-4 py-8">
       {/* Hero Section with Value Proposition */}
       <section className="mb-16">

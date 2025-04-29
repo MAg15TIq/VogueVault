@@ -1,14 +1,16 @@
 'use client';
 
-import AdSense from './AdSense';
+import AdSenseAdUnit from './AdSenseAdUnit';
 
 const InArticleAd = () => {
   return (
     <div className="my-8 text-center">
-      <AdSense 
-        adSlot="7440692602" 
+      <AdSenseAdUnit
+        adSlot="7440692602"
         adFormat="fluid"
+        layout="in-article"
         style={{ display: 'block' }}
+        loadOnlyWhenVisible={true}
       />
     </div>
   );

@@ -1,9 +1,25 @@
+# Allow all web crawlers
 User-agent: *
 Allow: /
 
+# Allow Google crawlers
 User-agent: Googlebot
 Allow: /
-Allow: /google-adsense.html
+
+# Allow Google AdSense crawler
+User-agent: Mediapartners-Google
+Allow: /
+
+# Allow Google Mobile AdSense crawler
+User-agent: Mediapartners-Google*
+Allow: /
+
+# Allow Google AdSense crawler
+User-agent: Adsbot-Google
+Allow: /
+
+# Allow Google verification file
 Allow: /adsense-verification.html
 
-Sitemap: https://voguevaults.store/sitemap.xml
+# Sitemap location
+Sitemap: https://voguevault.com/sitemap.xml

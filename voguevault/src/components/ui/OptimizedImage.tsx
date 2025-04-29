@@ -41,8 +41,30 @@ const OptimizedImage = ({
   };
 
   const handleImageError = () => {
-    // If the image fails to load, use a placeholder
-    setImgSrc('https://placehold.co/600x400/9c27b0/ffffff?text=VogueVault');
+    console.error(`Failed to load image: ${src}`);
+
+    // Check if the image path is relative and might be missing the leading slash
+    if (src && !src.startsWith('/') && !src.startsWith('http')) {
+      const correctedPath = `/${src}`;
+      console.log(`Attempting to load with corrected path: ${correctedPath}`);
+      setImgSrc(correctedPath);
+      return;
+    }
+
+    // If the image is from the articles directory but fails, try a category-based fallback
+    if (src && src.includes('/articles/')) {
+      const categoryMatch = src.match(/\/articles\/([^\/]+)\//);
+      if (categoryMatch && categoryMatch[1]) {
+        const category = categoryMatch[1];
+        const fallbackPath = `/images/category-${category}.jpg`;
+        console.log(`Attempting category fallback: ${fallbackPath}`);
+        setImgSrc(fallbackPath);
+        return;
+      }
+    }
+
+    // Default fallback
+    setImgSrc('/images/placeholder.jpg');
   };
 
   // Placeholder blur style

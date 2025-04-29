@@ -1,6 +1,360 @@
 // Mock article data - in a real application, this would come from a database
 export const articles = [
   {
+    id: 9,
+    title: "Digital Detox: Reclaiming Your Time and Attention",
+    content: `
+      <p>In our hyper-connected world, the average person spends over 11 hours daily interacting with screens and checks their smartphone approximately 150 times. This constant digital engagement has profound effects on our mental health, productivity, relationships, and overall quality of life. A digital detox—a deliberate period of reduced or eliminated screen time—offers a powerful reset for our relationship with technology. This comprehensive guide explores practical strategies for reclaiming your time and attention from digital distractions while maintaining the benefits technology offers.</p>
+
+      <!-- Ad Space: Banner -->
+      <div class="ad-container ad-banner">
+        <div class="ad-content">Advertisement Space</div>
+      </div>
+
+      <h2>Understanding Digital Overload: The Science Behind Screen Fatigue</h2>
+      <p>Before diving into detox strategies, it's important to understand how constant digital engagement affects our brains and bodies.</p>
+
+      <h3>Neurological Impact</h3>
+      <p>Research from neuroscience reveals several concerning effects of excessive screen time:</p>
+      <ul>
+        <li><strong>Attention fragmentation:</strong> The constant switching between apps, notifications, and tasks trains our brains to expect—and even crave—constant novelty, making sustained focus increasingly difficult</li>
+        <li><strong>Dopamine dependency:</strong> Digital platforms are specifically designed to trigger dopamine release, creating reward cycles that can lead to addictive patterns</li>
+        <li><strong>Cognitive overload:</strong> The sheer volume of information we process daily exceeds our brain's evolutionary capacity, leading to decision fatigue and mental exhaustion</li>
+        <li><strong>Sleep disruption:</strong> Blue light exposure and stimulating content interfere with melatonin production and sleep quality</li>
+      </ul>
+
+      <p>"What we're seeing is essentially a mismatch between our neurological hardware—evolved over millennia for different environments—and the digital software we're running on it," explains neuroscientist Dr. Maya Chen. "Our brains simply weren't designed to process the volume and velocity of information we're subjecting them to."</p>
+
+      <!-- Ad Space: In-Article -->
+      <div class="ad-container ad-in-article">
+        <div class="ad-content">Advertisement Space</div>
+      </div>
+
+      <h3>Psychological Consequences</h3>
+      <p>Beyond neurological effects, digital overload takes a psychological toll:</p>
+      <ul>
+        <li><strong>Increased anxiety and depression:</strong> Multiple studies link excessive social media use with higher rates of anxiety, depression, and feelings of isolation</li>
+        <li><strong>FOMO (Fear of Missing Out):</strong> The constant awareness of others' activities creates comparison anxiety and fear of exclusion</li>
+        <li><strong>Reduced self-esteem:</strong> Exposure to curated, idealized representations of others' lives often leads to negative self-comparison</li>
+        <li><strong>Diminished presence:</strong> "Phubbing" (phone snubbing) and partial attention damage real-world relationships and experiences</li>
+      </ul>
+
+      <p>"The psychological impact of constant connectivity is particularly concerning," notes clinical psychologist Dr. James Wilson. "We're seeing patients whose primary anxiety triggers are digital—notification stress, social media comparison, email overload. These simply didn't exist as clinical concerns even 15 years ago."</p>
+
+      <h3>Physical Effects</h3>
+      <p>The physical consequences of digital immersion include:</p>
+      <ul>
+        <li><strong>Digital eye strain:</strong> Symptoms include dry eyes, blurred vision, and headaches</li>
+        <li><strong>Musculoskeletal problems:</strong> "Text neck," repetitive strain injuries, and poor posture from device use</li>
+        <li><strong>Sedentary behavior:</strong> Increased screen time correlates with reduced physical activity</li>
+        <li><strong>Disrupted circadian rhythms:</strong> Evening screen use suppresses melatonin, affecting sleep quality and duration</li>
+      </ul>
+
+      <!-- Ad Space: In-Article -->
+      <div class="ad-container ad-in-article">
+        <div class="ad-content">Advertisement Space</div>
+      </div>
+
+      <h2>Signs You Need a Digital Detox</h2>
+      <p>Consider a digital detox if you experience these warning signs:</p>
+
+      <h3>Behavioral Indicators</h3>
+      <ul>
+        <li>Checking your phone within minutes of waking up and before going to sleep</li>
+        <li>Feeling anxious when your device is not immediately accessible</li>
+        <li>Phantom vibration syndrome—feeling your phone vibrate when it hasn't</li>
+        <li>Difficulty completing tasks without checking devices</li>
+        <li>Using devices while eating or during face-to-face conversations</li>
+        <li>Losing track of time while on devices ("time slip")</li>
+      </ul>
+
+      <h3>Emotional Signals</h3>
+      <ul>
+        <li>Feeling overwhelmed by digital communication</li>
+        <li>Comparing yourself unfavorably to others based on social media</li>
+        <li>Experiencing increased stress from work emails outside office hours</li>
+        <li>Feeling relief when devices are temporarily unavailable</li>
+        <li>Noticing that digital activities no longer bring enjoyment</li>
+      </ul>
+
+      <p>"These signs don't necessarily indicate addiction, but they do suggest an unhealthy relationship with technology," explains digital wellness expert Sarah Johnson. "The good news is that our digital habits are malleable—with intentional effort, we can reshape them to serve rather than control us."</p>
+
+      <!-- Ad Space: In-Article -->
+      <div class="ad-container ad-in-article">
+        <div class="ad-content">Advertisement Space</div>
+      </div>
+
+      <h2>Designing Your Digital Detox: Approaches for Different Needs</h2>
+      <p>Digital detoxes aren't one-size-fits-all. Consider these approaches based on your circumstances and goals:</p>
+
+      <h3>The Graduated Approach: Step-Down Detoxing</h3>
+      <p>For those who find the idea of disconnecting completely overwhelming, a graduated approach offers a gentler transition:</p>
+
+      <h4>Week 1: Awareness Building</h4>
+      <ul>
+        <li>Install screen time tracking apps to establish your baseline usage</li>
+        <li>Identify your primary digital triggers and distractions</li>
+        <li>Set specific goals for what you want to achieve through reduced screen time</li>
+        <li>Create a list of alternative activities to replace screen time</li>
+      </ul>
+
+      <h4>Week 2: Boundary Setting</h4>
+      <ul>
+        <li>Establish tech-free zones in your home (bedroom, dining area)</li>
+        <li>Implement tech-free times (first hour after waking, during meals, after 9 PM)</li>
+        <li>Turn off non-essential notifications</li>
+        <li>Delete your most distracting apps or move them to a folder on your second screen</li>
+      </ul>
+
+      <h4>Week 3: Selective Abstinence</h4>
+      <ul>
+        <li>Choose one platform or device to completely avoid for the week</li>
+        <li>Implement a "social media sabbath"—one day completely free from social platforms</li>
+        <li>Use airplane mode for predetermined periods throughout the day</li>
+        <li>Practice single-tasking instead of media multitasking</li>
+      </ul>
+
+      <p>"The graduated approach works well because it builds your 'attention muscle' gradually," notes Johnson. "Each step makes the next one more achievable, and you begin experiencing benefits that motivate continued progress."</p>
+
+      <!-- Ad Space: In-Article -->
+      <div class="ad-container ad-in-article">
+        <div class="ad-content">Advertisement Space</div>
+      </div>
+
+      <h3>The Immersive Approach: Full Digital Sabbaticals</h3>
+      <p>For deeper reset experiences, consider these more comprehensive detox models:</p>
+
+      <h4>Weekend Detox (48-72 Hours)</h4>
+      <p>A weekend detox provides a taste of digital freedom without major life disruption:</p>
+      <ul>
+        <li>Notify important contacts that you'll be unavailable</li>
+        <li>Set up emergency contact protocols if necessary</li>
+        <li>Remove devices from easy access or use a timed lockbox</li>
+        <li>Plan engaging offline activities to fill the time</li>
+        <li>Keep a journal to document insights and experiences</li>
+      </ul>
+
+      <h4>Vacation Detox (1-2 Weeks)</h4>
+      <p>Using vacation time for a digital detox creates a natural boundary:</p>
+      <ul>
+        <li>Set comprehensive out-of-office messages</li>
+        <li>Consider destinations with limited connectivity</li>
+        <li>Bring only essential devices or "dumb" alternatives (basic phone, physical camera)</li>
+        <li>Create a physical "emergency contact" card for truly urgent matters</li>
+        <li>Plan activities that immerse you in nature, culture, or physical challenges</li>
+      </ul>
+
+      <h4>Life Reset Detox (30 Days)</h4>
+      <p>For profound habit changes, a 30-day detox offers transformative potential:</p>
+      <ul>
+        <li>Requires significant preparation and commitment</li>
+        <li>Often involves temporarily deactivating social accounts</li>
+        <li>May require delegation of digital responsibilities</li>
+        <li>Benefits from community support or professional guidance</li>
+        <li>Should include structured reintegration planning</li>
+      </ul>
+
+      <p>"Extended detoxes create space for profound insights about your relationship with technology," explains digital minimalist and author Thomas Zhang. "Many participants report that the most valuable realizations come after the initial discomfort passes—usually around day 10-14 of longer detoxes."</p>
+
+      <!-- Ad Space: In-Article -->
+      <div class="ad-container ad-in-article">
+        <div class="ad-content">Advertisement Space</div>
+      </div>
+
+      <h3>The Targeted Approach: Selective Digital Minimalism</h3>
+      <p>Rather than all-or-nothing, targeted detoxing focuses on specific problematic areas:</p>
+
+      <h4>Social Media Detox</h4>
+      <ul>
+        <li>Remove social apps from your phone while maintaining desktop access</li>
+        <li>Use browser extensions to limit time on specific platforms</li>
+        <li>Unfollow accounts that trigger comparison or negative emotions</li>
+        <li>Convert passive scrolling time to active, purposeful engagement</li>
+      </ul>
+
+      <h4>Work Communication Detox</h4>
+      <ul>
+        <li>Establish email-checking schedules (2-3 specific times daily)</li>
+        <li>Implement "no email hours" during deep work periods</li>
+        <li>Use auto-responders to manage expectations about response times</li>
+        <li>Create separate work and personal devices or profiles</li>
+      </ul>
+
+      <h4>Entertainment Streaming Detox</h4>
+      <ul>
+        <li>Remove auto-play features from streaming services</li>
+        <li>Set viewing budgets (specific number of episodes/hours per week)</li>
+        <li>Replace background viewing with intentional watching</li>
+        <li>Substitute passive consumption with active creation</li>
+      </ul>
+
+      <p>"Targeted detoxes are particularly effective because they address your specific digital pain points," notes productivity coach Maria Gonzalez. "They're also more sustainable long-term because they don't require complete technological abstinence, which is unrealistic for most modern professionals."</p>
+
+      <!-- Ad Space: In-Article -->
+      <div class="ad-container ad-in-article">
+        <div class="ad-content">Advertisement Space</div>
+      </div>
+
+      <h2>Essential Digital Detox Tools and Techniques</h2>
+      <p>Regardless of which detox approach you choose, these tools and techniques support successful implementation:</p>
+
+      <h3>Technology-Based Solutions</h3>
+      <p>Ironically, some of the most effective digital detox tools are digital themselves:</p>
+
+      <h4>Screen Time Management Apps</h4>
+      <ul>
+        <li><strong>Focus apps:</strong> Forest, Freedom, Focus@Will</li>
+        <li><strong>Tracking tools:</strong> RescueTime, Moment, Space</li>
+        <li><strong>Site blockers:</strong> Cold Turkey, LeechBlock, StayFocusd</li>
+        <li><strong>Distraction-free devices:</strong> Light Phone, Punkt MP02</li>
+      </ul>
+
+      <h4>Device Settings Optimization</h4>
+      <ul>
+        <li>Grayscale mode reduces dopamine response to colorful interfaces</li>
+        <li>Do Not Disturb schedules automatically limit interruptions</li>
+        <li>Screen time limits enforce boundaries through system settings</li>
+        <li>Content restrictions block problematic apps during certain hours</li>
+      </ul>
+
+      <p>"The right digital tools can create friction that makes mindless usage more difficult," explains tech ethicist Dr. Elena Park. "The goal isn't to eliminate technology but to transform your relationship with it from passive to intentional."</p>
+
+      <h3>Environmental Modifications</h3>
+      <p>Physical environment changes support digital boundaries:</p>
+
+      <h4>Home Environment</h4>
+      <ul>
+        <li>Create charging stations outside bedrooms</li>
+        <li>Designate screen-free zones with visible reminders</li>
+        <li>Use analog alternatives (physical books, paper notebooks, alarm clocks)</li>
+        <li>Create attractive "activity stations" for offline pursuits</li>
+      </ul>
+
+      <h4>Workspace Setup</h4>
+      <ul>
+        <li>Position screens to minimize neck strain</li>
+        <li>Use separate devices for different functions when possible</li>
+        <li>Keep distracting devices out of sight during focus periods</li>
+        <li>Create visual cues for "focus mode" vs. "connected mode"</li>
+      </ul>
+
+      <!-- Ad Space: In-Article -->
+      <div class="ad-container ad-in-article">
+        <div class="ad-content">Advertisement Space</div>
+      </div>
+
+      <h3>Behavioral Techniques</h3>
+      <p>Psychological approaches that support healthier digital habits:</p>
+
+      <h4>Mindfulness Practices</h4>
+      <ul>
+        <li>Implement the "STOP" technique before device use: Stop, Take a breath, Observe your intention, Proceed mindfully</li>
+        <li>Practice the "10-minute rule"—wait ten minutes before responding to non-urgent notifications</li>
+        <li>Conduct regular "attention audits" to evaluate where your focus goes</li>
+        <li>Use device use as mindfulness bells—pause and breathe before engaging</li>
+      </ul>
+
+      <h4>Habit Replacement Strategies</h4>
+      <ul>
+        <li>Identify trigger-routine-reward patterns in your digital usage</li>
+        <li>Create specific "instead of" plans (e.g., "When I feel bored, instead of checking social media, I'll read one page of my book")</li>
+        <li>Stack habits by linking new behaviors to established routines</li>
+        <li>Use visual progress tracking to reinforce positive changes</li>
+      </ul>
+
+      <p>"Behavioral change is most successful when we address all three components of habits," explains behavioral scientist Dr. Michael Chang. "We need to recognize triggers, establish new routines, and ensure those new behaviors provide satisfying rewards."</p>
+
+      <!-- Ad Space: In-Article -->
+      <div class="ad-container ad-in-article">
+        <div class="ad-content">Advertisement Space</div>
+      </div>
+
+      <h2>Navigating Challenges: Overcoming Digital Detox Obstacles</h2>
+      <p>Common challenges during digital detoxes and strategies to address them:</p>
+
+      <h3>Professional Expectations</h3>
+      <p>For many, work presents the biggest obstacle to digital boundaries:</p>
+      <ul>
+        <li><strong>Communication management:</strong> Establish response time expectations with colleagues and clients</li>
+        <li><strong>Delegation strategies:</strong> Identify backup contacts for urgent matters during detox periods</li>
+        <li><strong>Boundary setting:</strong> Create clear policies about after-hours availability</li>
+        <li><strong>Productivity demonstration:</strong> Document increased effectiveness from focused work periods</li>
+      </ul>
+
+      <p>"The key is reframing digital boundaries as productivity enhancers rather than limitations," advises executive coach David Martinez. "When presented as a way to improve work quality and prevent burnout, most reasonable employers support these practices."</p>
+
+      <h3>Social Pressure</h3>
+      <p>Social expectations can undermine detox efforts:</p>
+      <ul>
+        <li><strong>Clear communication:</strong> Explain your detox goals to friends and family</li>
+        <li><strong>Alternative contact methods:</strong> Provide non-digital ways to reach you for important matters</li>
+        <li><strong>Social support:</strong> Invite others to join your detox efforts</li>
+        <li><strong>Boundary reinforcement:</strong> Practice kind but firm responses to digital pressure</li>
+      </ul>
+
+      <h3>FOMO and Withdrawal</h3>
+      <p>Psychological discomfort is common during initial detox phases:</p>
+      <ul>
+        <li><strong>Anticipate discomfort:</strong> Recognize that anxiety and restlessness are normal and temporary</li>
+        <li><strong>Substitute activities:</strong> Have engaging alternatives readily available</li>
+        <li><strong>Mindfulness techniques:</strong> Practice observing urges without acting on them</li>
+        <li><strong>Progress tracking:</strong> Document improvements in focus, mood, and presence</li>
+      </ul>
+
+      <p>"The withdrawal symptoms—restlessness, anxiety, phantom notification sensations—typically peak around 24-72 hours into a detox," notes Dr. Wilson. "Pushing through this window is crucial, as the benefits begin emerging once this phase passes."</p>
+
+      <!-- Ad Space: In-Article -->
+      <div class="ad-container ad-in-article">
+        <div class="ad-content">Advertisement Space</div>
+      </div>
+
+      <h2>Beyond Detox: Creating Sustainable Digital Wellness</h2>
+      <p>The ultimate goal isn't temporary detoxing but establishing an ongoing healthy relationship with technology:</p>
+
+      <h3>Intentional Reintegration</h3>
+      <p>How you return to technology after a detox is crucial:</p>
+      <ul>
+        <li>Evaluate each platform and tool before reintroducing it</li>
+        <li>Establish clear purposes and boundaries for each digital tool</li>
+        <li>Redesign notification settings based on detox insights</li>
+        <li>Create a personal technology use philosophy or manifesto</li>
+      </ul>
+
+      <h3>Ongoing Practices</h3>
+      <p>Sustainable digital wellness relies on consistent habits:</p>
+      <ul>
+        <li>Schedule regular mini-detoxes (e.g., device-free Sundays)</li>
+        <li>Conduct monthly digital usage reviews</li>
+        <li>Practice "slow media" consumption—fewer sources, greater depth</li>
+        <li>Cultivate analog skills and hobbies that don't require screens</li>
+        <li>Build in regular nature exposure and physical activity</li>
+      </ul>
+
+      <h3>Community Building</h3>
+      <p>Social support enhances sustainable digital wellness:</p>
+      <ul>
+        <li>Create accountability partnerships for digital boundaries</li>
+        <li>Establish tech-free social gatherings</li>
+        <li>Share successful strategies with friends and family</li>
+        <li>Advocate for healthy tech policies in your workplace</li>
+      </ul>
+
+      <p>"The most successful approach to digital wellness isn't about restriction—it's about intention," concludes Zhang. "The question isn't whether to use technology, but how to use it in ways that genuinely enhance rather than diminish our lives."</p>
+
+      <h2>Conclusion: From Digital Detox to Digital Flourishing</h2>
+      <p>A digital detox isn't an end in itself but a gateway to a more intentional relationship with technology. By temporarily stepping back, we gain the perspective needed to reintegrate digital tools in ways that support rather than subvert our deeper values and goals.</p>
+
+      <p>The ultimate aim isn't digital abstinence but digital flourishing—using technology as a powerful servant rather than allowing it to become an ineffective master. In a world of endless digital distractions, the ability to control your attention is perhaps the most valuable skill you can develop.</p>
+
+      <p>As you embark on your digital detox journey, remember that the goal isn't perfection but progress. Each step toward more intentional technology use represents a reclaiming of your most precious resources—your time and attention—and an investment in a more focused, connected, and meaningful life.</p>
+    `,
+    category: "Lifestyle",
+    author: "Michael Chang",
+    publishDate: "2024-03-10",
+    image: "/images/articles/lifestyle/digital-detox.jpg",
+    slug: "digital-detox-guide"
+  },
+  {
     id: 38,
     title: "Clean Beauty Brands Making a Difference",
     content: `

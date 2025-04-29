@@ -12,6 +12,7 @@ import ShareButtons from '@/components/features/ShareButtons';
 import CommentSection from '@/components/features/CommentSection';
 import SocialProof from '@/components/features/SocialProof';
 import AdManager from '@/components/ads/AdManager';
+import { ArticleStructuredData, BreadcrumbStructuredData } from '@/components/seo';
 import { getReadingTime } from '@/utils/readingTime';
 import { updateReadingProgress } from '@/utils/readingList';
 import { articles } from '@/data/articles';
@@ -75,8 +76,34 @@ export default function ArticleClientPage({ slug }: { slug: string }) {
     { label: article.title, href: `/articles/${article.slug}` }
   ];
 
+  // Get the current URL for structured data
+  const getFullUrl = () => {
+    if (typeof window !== 'undefined') {
+      return `${window.location.origin}/articles/${article.slug}`;
+    }
+    return `/articles/${article.slug}`;
+  };
+
   return (
     <div className="container mx-auto px-4 py-8">
+      {/* Structured Data for SEO */}
+      <ArticleStructuredData
+        title={article.title}
+        description={article.content.replace(/<[^>]*>/g, '').substring(0, 160) + '...'}
+        url={getFullUrl()}
+        imageUrl={article.image.startsWith('http') ? article.image : `${typeof window !== 'undefined' ? window.location.origin : ''}${article.image}`}
+        authorName={article.author}
+        publishDate={article.publishDate}
+        categoryName={article.category}
+      />
+
+      <BreadcrumbStructuredData
+        items={breadcrumbItems.map(item => ({
+          name: item.label,
+          url: item.href.startsWith('http') ? item.href : `${typeof window !== 'undefined' ? window.location.origin : ''}${item.href}`
+        }))}
+      />
+
       {/* Reading Progress Indicator */}
       <ReadingProgress targetRef={contentRef} />
 

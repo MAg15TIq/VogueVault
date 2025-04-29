@@ -1,68 +1,75 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Script from 'next/script';
+import AdErrorBoundary from './AdErrorBoundary';
+
+// Publisher ID should be defined as a constant for easy updates
+export const ADSENSE_PUBLISHER_ID = 'ca-pub-8215873816542659';
 
 interface AdSenseProps {
   adSlot: string;
   adFormat?: string;
   fullWidthResponsive?: boolean;
   style?: React.CSSProperties;
+  className?: string;
 }
 
+/**
+ * AdSense component for displaying Google AdSense ads
+ * Includes error handling and performance optimizations
+ */
 const AdSense: React.FC<AdSenseProps> = ({
   adSlot,
   adFormat = 'auto',
   fullWidthResponsive = true,
-  style = { display: 'block' }
+  style = { display: 'block' },
+  className = ''
 }) => {
   const adRef = useRef<HTMLDivElement>(null);
+  const [isAdLoaded, setIsAdLoaded] = useState(false);
+  const [adError, setAdError] = useState<Error | null>(null);
 
   useEffect(() => {
-    // Add meta tag for verification
-    const meta = document.createElement('meta');
-    meta.name = 'google-adsense-account';
-    meta.content = 'ca-pub-8215873816542659';
-    document.head.appendChild(meta);
+    // Don't try to load ads on the server side
+    if (typeof window === 'undefined') return;
 
-    try {
-      // @ts-ignore
-      (window.adsbygoogle = window.adsbygoogle || []).push({});
-    } catch (error) {
-      console.error('AdSense error:', error);
-    }
+    // Wait a bit to ensure the ad script is loaded
+    const timer = setTimeout(() => {
+      try {
+        // Initialize the ad
+        // @ts-ignore - adsbygoogle is added by the external script
+        (window.adsbygoogle = window.adsbygoogle || []).push({});
+        setIsAdLoaded(true);
+      } catch (error) {
+        console.error('AdSense initialization error:', error);
+        setAdError(error instanceof Error ? error : new Error('Failed to load ad'));
+      }
+    }, 100);
 
     return () => {
-      // Cleanup
-      if (document.head.contains(meta)) {
-        document.head.removeChild(meta);
-      }
+      clearTimeout(timer);
     };
   }, []);
 
+  // If there's an error, return null or a fallback
+  if (adError) {
+    return null;
+  }
+
   return (
-    <>
-      <Script
-        id="google-adsense-script"
-        strategy="afterInteractive"
-        async
-        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8215873816542659"
-        crossOrigin="anonymous"
-        onLoad={() => {
-          console.log('AdSense script loaded successfully');
-        }}
-      />
-      <div ref={adRef}>
+    <AdErrorBoundary>
+      <div ref={adRef} className={`ad-container ${className}`}>
         <ins
           className="adsbygoogle"
           style={style}
-          data-ad-client="ca-pub-8215873816542659"
+          data-ad-client={ADSENSE_PUBLISHER_ID}
           data-ad-slot={adSlot}
           data-ad-format={adFormat}
           data-full-width-responsive={fullWidthResponsive ? 'true' : 'false'}
         />
       </div>
-    </>
+    </AdErrorBoundary>
   );
 };
 
