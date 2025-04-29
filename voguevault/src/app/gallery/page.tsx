@@ -6,11 +6,6 @@ import Link from 'next/link';
 import Breadcrumbs from '@/components/ui/Breadcrumbs';
 import { articlesData } from '@/data/articlesData';
 
-export const metadata = {
-  title: 'Gallery - VogueVault',
-  description: 'Explore our curated collection of fashion, lifestyle, beauty, and culture images.',
-};
-
 // Gallery categories
 const categories = [
   { name: 'All', slug: 'all' },
@@ -60,16 +55,16 @@ export default function GalleryPage() {
   // Navigate to next/previous image in lightbox
   const navigateImage = (direction: 'next' | 'prev') => {
     if (selectedImage === null) return;
-    
+
     const currentIndex = filteredImages.findIndex(img => img.id === selectedImage);
     let newIndex;
-    
+
     if (direction === 'next') {
       newIndex = (currentIndex + 1) % filteredImages.length;
     } else {
       newIndex = (currentIndex - 1 + filteredImages.length) % filteredImages.length;
     }
-    
+
     setSelectedImage(filteredImages[newIndex].id);
   };
 
@@ -141,8 +136,8 @@ export default function GalleryPage() {
         // Grid View
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {filteredImages.map((item) => (
-            <div 
-              key={item.id} 
+            <div
+              key={item.id}
               className="relative aspect-square rounded-lg overflow-hidden cursor-pointer group"
               onClick={() => openLightbox(item.id)}
             >
@@ -166,8 +161,8 @@ export default function GalleryPage() {
         // Masonry View
         <div className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-4 space-y-4">
           {filteredImages.map((item, index) => (
-            <div 
-              key={item.id} 
+            <div
+              key={item.id}
               className={`relative break-inside-avoid rounded-lg overflow-hidden cursor-pointer group mb-4 ${
                 index % 3 === 0 ? 'aspect-square' : index % 3 === 1 ? 'aspect-[3/4]' : 'aspect-[4/5]'
               }`}
@@ -193,16 +188,16 @@ export default function GalleryPage() {
 
       {/* Lightbox */}
       {selectedImage !== null && (
-        <div 
+        <div
           className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center"
           onClick={closeLightbox}
         >
-          <div 
+          <div
             className="relative max-w-5xl max-h-[90vh] w-full mx-4"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Close button */}
-            <button 
+            <button
               className="absolute top-4 right-4 z-10 text-white bg-black/50 rounded-full p-2 hover:bg-black/70 transition-colors"
               onClick={closeLightbox}
             >
@@ -210,9 +205,9 @@ export default function GalleryPage() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
               </svg>
             </button>
-            
+
             {/* Navigation buttons */}
-            <button 
+            <button
               className="absolute left-4 top-1/2 -translate-y-1/2 z-10 text-white bg-black/50 rounded-full p-2 hover:bg-black/70 transition-colors"
               onClick={(e) => {
                 e.stopPropagation();
@@ -223,8 +218,8 @@ export default function GalleryPage() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
               </svg>
             </button>
-            
-            <button 
+
+            <button
               className="absolute right-4 top-1/2 -translate-y-1/2 z-10 text-white bg-black/50 rounded-full p-2 hover:bg-black/70 transition-colors"
               onClick={(e) => {
                 e.stopPropagation();
@@ -235,7 +230,7 @@ export default function GalleryPage() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
             </button>
-            
+
             {/* Image */}
             <div className="relative h-[80vh] w-full">
               {filteredImages.find(img => img.id === selectedImage) && (
@@ -250,7 +245,7 @@ export default function GalleryPage() {
                   <div className="absolute bottom-0 left-0 right-0 bg-black/70 text-white p-4">
                     <h3 className="text-xl font-bold">{filteredImages.find(img => img.id === selectedImage)!.title}</h3>
                     <p className="text-sm opacity-80">{filteredImages.find(img => img.id === selectedImage)!.category}</p>
-                    <Link 
+                    <Link
                       href={`/articles/${filteredImages.find(img => img.id === selectedImage)!.slug}`}
                       className="inline-block mt-2 text-primary hover:underline"
                       onClick={(e) => e.stopPropagation()}
