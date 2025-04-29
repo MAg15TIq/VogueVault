@@ -158,9 +158,12 @@ export const LocalBusinessStructuredData = ({
   };
 
   // Remove undefined properties
-  Object.keys(structuredData).forEach(key =>
-    structuredData[key] === undefined && delete structuredData[key]
-  );
+  Object.keys(structuredData).forEach(key => {
+    const typedKey = key as keyof typeof structuredData;
+    if (structuredData[typedKey] === undefined) {
+      delete structuredData[typedKey];
+    }
+  });
 
   return (
     <Script
