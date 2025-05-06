@@ -52,19 +52,19 @@ const Header = () => {
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex space-x-8">
-          <Link href="/" className="hover:text-primary transition-colors">
+          <Link href="/" className="hover:text-primary transition-colors nav-link">
             Home
           </Link>
-          <Link href="/categories/fashion" className="hover:text-primary transition-colors">
+          <Link href="/categories/fashion" className="hover:text-primary transition-colors nav-link">
             Fashion
           </Link>
-          <Link href="/categories/lifestyle" className="hover:text-primary transition-colors">
+          <Link href="/categories/lifestyle" className="hover:text-primary transition-colors nav-link">
             Lifestyle
           </Link>
-          <Link href="/categories/beauty" className="hover:text-primary transition-colors">
+          <Link href="/categories/beauty" className="hover:text-primary transition-colors nav-link">
             Beauty
           </Link>
-          <Link href="/categories/culture" className="hover:text-primary transition-colors">
+          <Link href="/categories/culture" className="hover:text-primary transition-colors nav-link">
             Culture
           </Link>
 
@@ -72,7 +72,7 @@ const Header = () => {
           <div className="relative" ref={moreDropdownRef}>
             <button
               onClick={toggleMoreDropdown}
-              className="flex items-center hover:text-primary transition-colors focus:outline-none"
+              className="flex items-center hover:text-primary transition-colors focus:outline-none nav-link"
               aria-expanded={isMoreDropdownOpen}
               aria-haspopup="true"
             >
@@ -127,13 +127,13 @@ const Header = () => {
 
         {/* Search, Bookmarks, Dark Mode Toggle, and Mobile Menu Button */}
         <div className="flex items-center space-x-4">
-          <Link href="/search" className="hover:text-primary transition-colors">
+          <Link href="/search" className="hover:text-primary transition-colors header-link">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
             </svg>
           </Link>
 
-          <Link href="/bookmarks" className="hover:text-primary transition-colors">
+          <Link href="/bookmarks" className="hover:text-primary transition-colors header-link">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" />
             </svg>
@@ -142,7 +142,7 @@ const Header = () => {
           {/* Dark Mode Toggle */}
           <button
             onClick={toggleTheme}
-            className="p-2 rounded-full hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors focus:outline-none"
+            className="p-2 rounded-full hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors focus:outline-none header-link"
             aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
           >
             {theme === 'dark' ? (
@@ -158,7 +158,7 @@ const Header = () => {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden focus:outline-none"
+            className="md:hidden focus:outline-none header-link"
             onClick={toggleMenu}
             aria-label="Toggle menu"
           >

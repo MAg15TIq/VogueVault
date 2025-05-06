@@ -13,6 +13,16 @@
   cursor: none !important;
 }
 
+/* Specifically target navigation elements */
+header a,
+header button,
+nav a,
+nav button,
+.header-link,
+.nav-link {
+  cursor: none !important;
+}
+
 /* Ensure cursor is visible on iframes and other elements that might override it */
 .custom-cursor-active iframe,
 .custom-cursor-active canvas,

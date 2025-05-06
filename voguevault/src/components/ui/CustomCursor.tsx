@@ -24,6 +24,12 @@ const CustomCursor = ({
     // Hide the default cursor
     document.body.classList.add('custom-cursor-active');
 
+    // Apply custom cursor to header elements specifically
+    const headerElements = document.querySelectorAll('header a, header button, nav a, nav button');
+    headerElements.forEach(el => {
+      el.classList.add('custom-cursor-active');
+    });
+
     const updatePosition = (e: MouseEvent) => {
       setPosition({ x: e.clientX, y: e.clientY });
     };
