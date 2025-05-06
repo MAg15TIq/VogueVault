@@ -132,37 +132,33 @@ export default function ArticleClientPage({ slug }: { slug: string }) {
         />
       </div>
 
-      {/* Article Content with Table of Contents */}
+      {/* Floating Table of Contents (visible on all screen sizes) */}
+      <TableOfContents contentRef={contentRef} floatingPosition={true} />
+
+      {/* Article Content with Sidebar */}
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
-        {/* Table of Contents - Desktop */}
+        {/* Sidebar - Desktop */}
         <div className="hidden lg:block">
-          <TableOfContents contentRef={contentRef} sticky />
-
           {/* Sidebar Ad */}
-          <div className="mt-8">
+          <div className="sticky top-24">
             <AdManager type="sidebar" />
-          </div>
 
-          {/* Social Proof - Compact */}
-          <div className="mt-8">
-            <SocialProof
-              variant="compact"
-              showStats={true}
-              showTestimonials={true}
-              title=""
-              description=""
-            />
+            {/* Social Proof - Compact */}
+            <div className="mt-8">
+              <SocialProof
+                variant="compact"
+                showStats={true}
+                showTestimonials={true}
+                title=""
+                description=""
+              />
+            </div>
           </div>
         </div>
 
         {/* Article Content */}
         <div className="lg:col-span-3">
           <div ref={contentRef} className="prose prose-lg dark:prose-invert max-w-none">
-            {/* Table of Contents - Mobile */}
-            <div className="lg:hidden mb-8 p-4 bg-neutral-50 dark:bg-neutral-800 rounded-lg">
-              <TableOfContents contentRef={contentRef} sticky={false} />
-            </div>
-
             {/* Top Ad */}
             <AdManager type="horizontal" />
 

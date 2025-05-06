@@ -6,7 +6,7 @@
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
-  
+
   <!-- Main Pages -->
   <url>
     <loc>https://voguevault.com/about</loc>
@@ -43,7 +43,7 @@
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
-  
+
   <!-- Category Pages -->
   <url>
     <loc>https://voguevault.com/categories/fashion</loc>
@@ -65,7 +65,7 @@
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
-  
+
   <!-- Articles - Fashion -->
   <url>
     <loc>https://voguevault.com/articles/summer-fashion-trends-2024</loc>
@@ -82,7 +82,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
-  
+
   <!-- Articles - Lifestyle -->
   <url>
     <loc>https://voguevault.com/articles/mindful-living-balance</loc>
@@ -94,10 +94,10 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
-  
+
   <!-- Articles - Beauty -->
   <url>
-    <loc>https://voguevault.com/articles/clean-beauty-ingredients-guide</loc>
+    <loc>https://voguevault.com/articles/skincare-science-ingredients</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -106,7 +106,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
-  
+
   <!-- Articles - Culture -->
   <url>
     <loc>https://voguevault.com/articles/street-art-fashion-influence</loc>

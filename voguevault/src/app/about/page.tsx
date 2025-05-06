@@ -37,7 +37,7 @@ export default function AboutPage() {
               VogueVault was founded in 2024 with a simple mission: to provide thoughtful, well-researched content on fashion, lifestyle, beauty, and culture. In a world of fast content and clickbait headlines, we wanted to create a space where readers could find articles with substance and style.
             </p>
             <p>
-              Our team of writers and editors brings diverse perspectives and expertise to every piece we publish. We believe that fashion and lifestyle content can be both accessible and intelligent, practical and inspiring.
+              Founded by Malik Mohsin Saleem Khan, VogueVault brings a unique perspective and expertise to every piece we publish. We believe that fashion and lifestyle content can be both accessible and intelligent, practical and inspiring.
             </p>
             <p>
               What sets VogueVault apart is our commitment to quality over quantity. Rather than churning out dozens of articles daily, we focus on creating fewer, more meaningful pieces that our readers can truly benefit from.
@@ -96,53 +96,38 @@ export default function AboutPage() {
         />
       </section>
 
-      {/* Meet the Team Section */}
+      {/* Meet the Author Section */}
       <section className="mb-16">
-        <h2 className="text-3xl font-bold mb-8 text-center">Meet the Team</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {[
-            {
-              name: 'Emma Rodriguez',
-              role: 'Fashion Editor',
-              image: '/images/team/fashion-editor.jpg',
-              bio: 'With over 10 years of experience in the fashion industry, Emma brings expert insights on the latest trends and sustainable fashion practices.'
-            },
-            {
-              name: 'Michael Chang',
-              role: 'Lifestyle Writer',
-              image: '/images/team/lifestyle-writer.jpg',
-              bio: 'Michael specializes in wellness, productivity, and mindful living, helping readers create balanced and fulfilling lifestyles.'
-            },
-            {
-              name: 'Sophia Kim',
-              role: 'Beauty Expert',
-              image: '/images/team/beauty-expert.jpg',
-              bio: 'A certified makeup artist and skincare specialist, Sophia shares evidence-based beauty advice and product recommendations.'
-            },
-            {
-              name: 'James Wilson',
-              role: 'Culture Correspondent',
-              image: '/images/team/culture-correspondent.jpg',
-              bio: 'James covers art, music, literature, and cultural movements with a focus on how they intersect with fashion and lifestyle.'
-            }
-          ].map((member) => (
-            <div key={member.name} className="bg-white dark:bg-neutral-800 rounded-xl overflow-hidden shadow-md text-center">
-              <div className="relative h-64 w-full">
+        <h2 className="text-3xl font-bold mb-8 text-center">Meet the Author</h2>
+        <div className="max-w-3xl mx-auto">
+          <div className="bg-white dark:bg-neutral-800 rounded-xl overflow-hidden shadow-md">
+            <div className="flex flex-col md:flex-row">
+              <div className="relative md:w-1/3 h-64 md:h-auto">
                 <Image
-                  src={member.image}
-                  alt={`${member.name} - ${member.role}`}
+                  src="/images/team/malik-mohsin.jpg"
+                  alt="Malik Mohsin Saleem Khan - Author"
                   fill
                   className="object-cover"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                  sizes="(max-width: 768px) 100vw, 33vw"
                 />
               </div>
-              <div className="p-6">
-                <h3 className="text-xl font-bold">{member.name}</h3>
-                <p className="text-primary mb-2">{member.role}</p>
-                <p className="text-sm text-neutral-600 dark:text-neutral-400">{member.bio}</p>
+              <div className="p-6 md:w-2/3">
+                <h3 className="text-2xl font-bold">Malik Mohsin Saleem Khan</h3>
+                <p className="text-primary mb-4">Founder & Author</p>
+                <div className="prose prose-lg dark:prose-invert">
+                  <p>
+                    Malik Mohsin Saleem Khan is the creative force behind VogueVault, bringing his passion for fashion, lifestyle, beauty, and culture to every article on the site. With a keen eye for trends and a commitment to thoughtful, well-researched content, Malik has created a unique voice in the digital publishing landscape.
+                  </p>
+                  <p>
+                    His approach combines in-depth research with accessible writing, making complex topics engaging and relevant to readers from all backgrounds. Malik's work spans across all VogueVault categories, offering expert insights on everything from sustainable fashion practices to mindful living techniques.
+                  </p>
+                  <p>
+                    When not writing for VogueVault, Malik enjoys traveling to gather new perspectives, experimenting with photography, and exploring the intersection of traditional and contemporary cultural expressions.
+                  </p>
+                </div>
               </div>
             </div>
-          ))}
+          </div>
         </div>
       </section>
 

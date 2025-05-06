@@ -3,15 +3,13 @@
 import { useState, useEffect } from 'react';
 
 interface CustomCursorProps {
-  color?: string;
-  size?: number;
   showOnMobile?: boolean;
+  size?: number;
 }
 
 const CustomCursor = ({
-  color = '#9c27b0',
-  size = 20,
   showOnMobile = false,
+  size = 48,
 }: CustomCursorProps) => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [visible, setVisible] = useState(false);
@@ -22,6 +20,9 @@ const CustomCursor = ({
     if (!showOnMobile && window.matchMedia('(max-width: 768px)').matches) {
       return;
     }
+
+    // Hide the default cursor
+    document.body.classList.add('custom-cursor-active');
 
     const updatePosition = (e: MouseEvent) => {
       setPosition({ x: e.clientX, y: e.clientY });
@@ -58,6 +59,9 @@ const CustomCursor = ({
     document.addEventListener('mouseout', handleHoverEnd);
 
     return () => {
+      // Restore default cursor
+      document.body.classList.remove('custom-cursor-active');
+
       document.removeEventListener('mousemove', updatePosition);
       document.removeEventListener('mouseenter', handleMouseEnter);
       document.removeEventListener('mouseleave', handleMouseLeave);
@@ -70,18 +74,22 @@ const CustomCursor = ({
     return null;
   }
 
+  const cursorSize = isHovering ? size * 1.2 : size;
+
   return (
     <div
-      className="fixed pointer-events-none z-50 rounded-full shadow-md"
+      className="fixed pointer-events-none z-50"
       style={{
         left: `${position.x}px`,
         top: `${position.y}px`,
-        width: `${isHovering ? size * 1.5 : size}px`,
-        height: `${isHovering ? size * 1.5 : size}px`,
-        backgroundColor: isHovering ? 'rgba(156, 39, 176, 0.3)' : 'rgba(156, 39, 176, 0.15)',
-        border: `2px solid ${color}`,
+        width: `${cursorSize}px`,
+        height: `${cursorSize}px`,
         transform: 'translate(-50%, -50%)',
-        transition: 'width 0.2s ease-out, height 0.2s ease-out, background-color 0.2s ease-out',
+        transition: 'width 0.2s ease-out, height 0.2s ease-out',
+        backgroundImage: `url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24"><path fill="%23FFF" stroke="%23000" stroke-width="2" d="M5.5 3.21V20.8c0 .45.54.67.85.35l4.86-4.86a.5.5 0 0 1 .35-.15h6.87a.5.5 0 0 0 .35-.85L6.35 2.85a.5.5 0 0 0-.85.35Z"></path></svg>')`,
+        backgroundSize: 'contain',
+        backgroundRepeat: 'no-repeat',
+        backgroundPosition: 'center',
       }}
     />
   );

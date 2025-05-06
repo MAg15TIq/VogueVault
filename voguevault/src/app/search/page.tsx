@@ -24,13 +24,13 @@ const allArticles = [
     publishDate: "2024-04-10"
   },
   {
-    id: 3,
-    title: "Clean Beauty Revolution: Ingredients to Look For and Avoid",
-    excerpt: "Navigate the world of clean beauty with our comprehensive guide to beneficial and harmful ingredients.",
+    id: 10,
+    title: "The Science of Skincare: Understanding Ingredients",
+    excerpt: "Navigate the world of skincare with our comprehensive guide to beneficial and harmful ingredients.",
     category: "Beauty",
     image: "/images/placeholder-3.jpg",
-    slug: "clean-beauty-ingredients-guide",
-    publishDate: "2024-04-05"
+    slug: "skincare-science-ingredients",
+    publishDate: "2024-03-05"
   },
   {
     id: 4,
@@ -87,16 +87,16 @@ const allArticles = [
     publishDate: "2024-03-10"
   },
   {
-    id: 10,
+    id: 11,
     title: "The Science of Skincare: Understanding Active Ingredients",
     excerpt: "A deep dive into how retinol, vitamin C, and other actives transform your skin.",
     category: "Beauty",
     image: "/images/placeholder-10.jpg",
     slug: "skincare-active-ingredients",
-    publishDate: "2024-03-05"
+    publishDate: "2024-03-01"
   },
   {
-    id: 11,
+    id: 12,
     title: "Global Music Trends Reshaping Pop Culture",
     excerpt: "How international sounds are influencing mainstream music and cultural expression.",
     category: "Culture",
@@ -114,47 +114,47 @@ export default function SearchPage() {
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [sortBy, setSortBy] = useState('newest');
   const [searchResults, setSearchResults] = useState(allArticles);
-  
+
   // Handle search and filtering
   useEffect(() => {
     let filteredResults = [...allArticles];
-    
+
     // Filter by search query
     if (searchQuery) {
       const query = searchQuery.toLowerCase();
-      filteredResults = filteredResults.filter(article => 
-        article.title.toLowerCase().includes(query) || 
+      filteredResults = filteredResults.filter(article =>
+        article.title.toLowerCase().includes(query) ||
         article.excerpt.toLowerCase().includes(query)
       );
     }
-    
+
     // Filter by category
     if (selectedCategory !== 'All') {
-      filteredResults = filteredResults.filter(article => 
+      filteredResults = filteredResults.filter(article =>
         article.category === selectedCategory
       );
     }
-    
+
     // Sort results
     if (sortBy === 'newest') {
-      filteredResults.sort((a, b) => 
+      filteredResults.sort((a, b) =>
         new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime()
       );
     } else if (sortBy === 'oldest') {
-      filteredResults.sort((a, b) => 
+      filteredResults.sort((a, b) =>
         new Date(a.publishDate).getTime() - new Date(b.publishDate).getTime()
       );
     } else if (sortBy === 'alphabetical') {
       filteredResults.sort((a, b) => a.title.localeCompare(b.title));
     }
-    
+
     setSearchResults(filteredResults);
   }, [searchQuery, selectedCategory, sortBy]);
-  
+
   return (
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-3xl md:text-4xl font-bold mb-8">Search Articles</h1>
-      
+
       {/* Search and Filter Controls */}
       <div className="bg-white dark:bg-neutral-800 rounded-xl shadow-md p-6 mb-8">
         <div className="flex flex-col md:flex-row gap-4">
@@ -175,7 +175,7 @@ export default function SearchPage() {
               />
             </div>
           </div>
-          
+
           {/* Category Filter */}
           <div className="md:w-48">
             <select
@@ -188,7 +188,7 @@ export default function SearchPage() {
               ))}
             </select>
           </div>
-          
+
           {/* Sort By */}
           <div className="md:w-48">
             <select
@@ -203,15 +203,15 @@ export default function SearchPage() {
           </div>
         </div>
       </div>
-      
+
       {/* Search Results */}
       <div className="mb-8">
         <h2 className="text-xl font-semibold mb-4">
-          {searchResults.length} {searchResults.length === 1 ? 'Result' : 'Results'} 
+          {searchResults.length} {searchResults.length === 1 ? 'Result' : 'Results'}
           {searchQuery && ` for "${searchQuery}"`}
           {selectedCategory !== 'All' && ` in ${selectedCategory}`}
         </h2>
-        
+
         {searchResults.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {searchResults.map((article) => (
@@ -237,8 +237,8 @@ export default function SearchPage() {
                     </Link>
                   </h3>
                   <p className="text-neutral-600 dark:text-neutral-300 mb-4">{article.excerpt}</p>
-                  <Link 
-                    href={`/articles/${article.slug}`} 
+                  <Link
+                    href={`/articles/${article.slug}`}
                     className="text-primary hover:text-primary-dark font-medium inline-flex items-center"
                   >
                     Read More
@@ -269,7 +269,7 @@ export default function SearchPage() {
           </div>
         )}
       </div>
-      
+
       {/* Popular Searches */}
       <div className="bg-neutral-100 dark:bg-neutral-800 rounded-xl p-6">
         <h3 className="text-xl font-semibold mb-4">Popular Searches</h3>

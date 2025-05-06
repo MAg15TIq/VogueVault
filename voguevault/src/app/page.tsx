@@ -22,12 +22,12 @@ const featuredArticles = [
     slug: "mindful-living-balance"
   },
   {
-    id: 3,
-    title: "Clean Beauty Revolution: Ingredients to Look For and Avoid",
-    excerpt: "Navigate the world of clean beauty with our comprehensive guide to beneficial and harmful ingredients.",
+    id: 10,
+    title: "The Science of Skincare: Understanding Ingredients",
+    excerpt: "Navigate the world of skincare with our comprehensive guide to beneficial and harmful ingredients.",
     category: "Beauty",
     image: "/images/articles/beauty/skincare-science.jpg",
-    slug: "clean-beauty-ingredients-guide"
+    slug: "skincare-science-ingredients"
   }
 ];
 

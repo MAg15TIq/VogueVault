@@ -74,6 +74,11 @@ body {
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
 }
 
+/* Custom cursor styles */
+.custom-cursor-active {
+  cursor: none;
+}
+
 /* Typography styles */
 h1, h2, h3, h4, h5, h6 {
   font-weight: 600;
@@ -276,4 +281,58 @@ a:hover {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+/* Retractable Table of Contents Styles */
+.toc-floating {
+  width: 300px;
+  max-width: 80vw;
+  z-index: 50;
+}
+
+.toc-floating .toc-content {
+  border-right: 3px solid var(--primary);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  width: 100%;
+}
+
+.toc-toggle-btn {
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 0 4px 4px 0;
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.toc-toggle-btn:hover {
+  background-color: var(--primary-dark);
+}
+
+.toc-tab {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  white-space: nowrap;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+}
+
+/* Ensure TOC doesn't interfere with content on small screens */
+@media (max-width: 640px) {
+  .toc-floating {
+    width: 250px;
+    max-width: 85vw;
+  }
+
+  .toc-tab {
+    font-size: 0.75rem;
+  }
+
+  /* Adjust position to be slightly higher on mobile to avoid bottom navigation */
+  .toc-floating {
+    top: 40%;
+  }
 }

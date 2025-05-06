@@ -240,7 +240,7 @@ export const articles = [
       <p>As these brands continue to innovate and inspire others to follow their lead, the boundary between "clean beauty" and "beauty" may eventually disappear—with responsible practices becoming the industry standard rather than a niche segment. Until then, these companies remain at the forefront of a movement that's making beauty a force for positive change in the world.</p>
     `,
     category: "Beauty",
-    author: "Aisha Patel",
+    author: "Malik Mohsin Saleem Khan",
     publishDate: "2023-10-20",
     image: "/images/articles/beauty/clean-beauty.jpg",
     slug: "clean-beauty-brands"
@@ -601,7 +601,7 @@ export const articles = [
       <p>By implementing thoughtful seasonal transitions, you not only address immediate concerns but also contribute to the long-term health of your skin and hair. This proactive approach prevents many common issues before they develop, creating a foundation for radiant beauty in every season.</p>
     `,
     category: "Beauty",
-    author: "Sophia Kim",
+    author: "Malik Mohsin Saleem Khan",
     publishDate: "2023-10-25",
     image: "/images/articles/beauty/seasonal-beauty.jpg",
     slug: "seasonal-beauty-transitions"
@@ -711,7 +711,7 @@ export const articles = [
       <p>The journey of street art from vandalism to galleries represents more than just a shift in artistic appreciation—it reflects broader societal reconsiderations about who has the right to shape public space, whose voices deserve to be heard, and what constitutes meaningful cultural expression. As these questions continue to evolve, so too will the art that emerges on our streets.</p>
     `,
     category: "Culture",
-    author: "Marcus Johnson",
+    author: "Malik Mohsin Saleem Khan",
     publishDate: "2024-03-28",
     image: "/images/articles/culture/street-art.jpg",
     slug: "street-art-evolution"
@@ -845,7 +845,7 @@ export const articles = [
       <p>This evolution represents not just a shift in musical styles but a broader cultural transformation—one that embraces diversity, celebrates cross-cultural collaboration, and recognizes that the most vibrant creative expressions often emerge from the meeting of different traditions. In this sense, the globalization of music offers a hopeful model for cultural exchange in our complex, interconnected world.</p>
     `,
     category: "Culture",
-    author: "Jamal Washington",
+    author: "Malik Mohsin Saleem Khan",
     publishDate: "2024-03-01",
     image: "/images/articles/culture/global-music.jpg",
     slug: "global-music-trends"
@@ -966,7 +966,7 @@ export const articles = [
       <p>As consumers navigate these trends, the most modern approach might be selectivity – choosing pieces that speak to personal style while considering their broader impact. After all, the most sustainable garment is one that will be worn and loved for many summers to come.</p>
     `,
     category: "Fashion",
-    author: "Emma Rodriguez",
+    author: "Malik Mohsin Saleem Khan",
     publishDate: "2024-04-15",
     image: "/images/articles/fashion/summer-trends-2024.jpg",
     slug: "summer-fashion-trends-2024"
@@ -1378,7 +1378,7 @@ export const articles = [
       <p>In a world facing both ecological limits and epidemic levels of stress, anxiety, and disconnection, this ancient wisdom may be more relevant than ever—offering a path to greater wellbeing not through addition but through the counterintuitive power of thoughtful subtraction.</p>
     `,
     category: "Lifestyle",
-    author: "Maria Rodriguez",
+    author: "Malik Mohsin Saleem Khan",
     publishDate: "2023-11-15",
     image: "/images/articles/lifestyle/minimalist-living.jpg",
     slug: "minimalist-living-happiness"
