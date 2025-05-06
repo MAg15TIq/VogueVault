@@ -9,7 +9,7 @@ interface CustomCursorProps {
 
 const CustomCursor = ({
   showOnMobile = false,
-  size = 48,
+  size = 24,
 }: CustomCursorProps) => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [visible, setVisible] = useState(false);

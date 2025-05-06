@@ -104,10 +104,10 @@ export default function AboutPage() {
             <div className="flex flex-col md:flex-row">
               <div className="relative md:w-1/3 h-64 md:h-auto">
                 <Image
-                  src="/images/team/malik-mohsin.jpg"
+                  src="/images/team/malik-mohsin.svg"
                   alt="Malik Mohsin Saleem Khan - Author"
                   fill
-                  className="object-cover"
+                  className="object-contain"
                   sizes="(max-width: 768px) 100vw, 33vw"
                 />
               </div>
