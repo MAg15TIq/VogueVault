@@ -33,7 +33,7 @@ const Header = () => {
   }, []);
 
   return (
-    <header className="bg-white dark:bg-neutral-900 shadow-sm sticky top-0 z-50">
+    <header className="bg-white dark:bg-neutral-900 shadow-sm sticky top-0 z-40 custom-cursor-active header-container">
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
         {/* Logo */}
         <Link
@@ -51,7 +51,7 @@ const Header = () => {
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex space-x-8">
+        <nav className="hidden md:flex space-x-8 custom-cursor-active nav-container">
           <Link href="/" className="hover:text-primary transition-colors nav-link">
             Home
           </Link>
@@ -89,7 +89,7 @@ const Header = () => {
             </button>
 
             {isMoreDropdownOpen && (
-              <div className="absolute left-0 mt-2 w-48 bg-white dark:bg-neutral-800 rounded-md shadow-lg py-1 z-50">
+              <div className="absolute left-0 mt-2 w-48 bg-white dark:bg-neutral-800 rounded-md shadow-lg py-1 z-45">
                 <Link
                   href="/about"
                   className="block px-4 py-2 text-sm hover:bg-neutral-100 dark:hover:bg-neutral-700 hover:text-primary transition-colors"

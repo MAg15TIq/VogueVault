@@ -19,7 +19,9 @@ header button,
 nav a,
 nav button,
 .header-link,
-.nav-link {
+.nav-link,
+header *,
+nav * {
   cursor: none !important;
 }
 
@@ -28,4 +30,26 @@ nav button,
 .custom-cursor-active canvas,
 .custom-cursor-active video {
   pointer-events: auto;
+}
+
+/* Force custom cursor on navigation elements */
+header,
+nav,
+.header-container,
+.nav-container {
+  cursor: none !important;
+  position: relative; /* Ensure proper stacking context */
+}
+
+/* Ensure the cursor is applied to all navigation elements */
+header *:hover,
+nav *:hover,
+.header-link:hover,
+.nav-link:hover {
+  cursor: none !important;
+}
+
+/* Ensure custom cursor is always on top of all elements */
+.fixed.pointer-events-none {
+  z-index: 9999 !important; /* Highest z-index to ensure cursor is always on top */
 }

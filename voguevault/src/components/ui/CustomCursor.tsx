@@ -25,13 +25,25 @@ const CustomCursor = ({
     document.body.classList.add('custom-cursor-active');
 
     // Apply custom cursor to header elements specifically
-    const headerElements = document.querySelectorAll('header a, header button, nav a, nav button');
+    const headerElements = document.querySelectorAll('header a, header button, nav a, nav button, .header-link, .nav-link');
     headerElements.forEach(el => {
       el.classList.add('custom-cursor-active');
     });
 
+    // Force apply to navigation elements with a delay to ensure they're loaded
+    setTimeout(() => {
+      const navElements = document.querySelectorAll('header a, header button, nav a, nav button, .header-link, .nav-link');
+      navElements.forEach(el => {
+        el.classList.add('custom-cursor-active');
+      });
+
+      // Ensure the cursor is visible
+      setVisible(true);
+    }, 500);
+
     const updatePosition = (e: MouseEvent) => {
       setPosition({ x: e.clientX, y: e.clientY });
+      if (!visible) setVisible(true);
     };
 
     const handleMouseEnter = () => {
@@ -84,7 +96,7 @@ const CustomCursor = ({
 
   return (
     <div
-      className="fixed pointer-events-none z-50"
+      className="fixed pointer-events-none z-[9999]"
       style={{
         left: `${position.x}px`,
         top: `${position.y}px`,
