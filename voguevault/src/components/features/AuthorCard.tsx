@@ -9,16 +9,16 @@ interface AuthorCardProps {
   className?: string;
 }
 
-const AuthorCard = ({ 
-  authorName, 
+const AuthorCard = ({
+  authorName,
   variant = 'compact',
   className = ''
 }: AuthorCardProps) => {
   // For now, we only have one author - Malik Mohsin Saleem Khan
-  const authorImagePath = '/images/team/malik-mohsin.svg';
+  const authorImagePath = '/images/team/malik-mohsin.jpg';
   const authorRole = 'Founder & Author';
   const authorBio = 'Malik Mohsin Saleem Khan is the creative force behind VogueVault, bringing his passion for fashion, lifestyle, beauty, and culture to every article on the site.';
-  
+
   if (variant === 'compact') {
     return (
       <div className={`flex items-center ${className}`}>
@@ -39,7 +39,7 @@ const AuthorCard = ({
       </div>
     );
   }
-  
+
   return (
     <div className={`bg-white dark:bg-neutral-800 rounded-xl overflow-hidden shadow-md p-6 ${className}`}>
       <div className="flex flex-col sm:flex-row items-center sm:items-start">
@@ -57,8 +57,8 @@ const AuthorCard = ({
           </Link>
           <p className="text-sm text-primary mb-2">{authorRole}</p>
           <p className="text-neutral-600 dark:text-neutral-300 text-sm">{authorBio}</p>
-          <Link 
-            href="/about" 
+          <Link
+            href="/about"
             className="inline-block mt-3 text-primary hover:text-primary-dark font-medium text-sm"
           >
             View Full Profile
