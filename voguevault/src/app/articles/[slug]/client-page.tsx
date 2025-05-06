@@ -11,6 +11,7 @@ import ReadingListButton from '@/components/features/ReadingListButton';
 import ShareButtons from '@/components/features/ShareButtons';
 import CommentSection from '@/components/features/CommentSection';
 import SocialProof from '@/components/features/SocialProof';
+import AuthorCard from '@/components/features/AuthorCard';
 import AdManager from '@/components/ads/AdManager';
 import { ArticleStructuredData, BreadcrumbStructuredData } from '@/components/seo';
 import { getReadingTime } from '@/utils/readingTime';
@@ -110,13 +111,14 @@ export default function ArticleClientPage({ slug }: { slug: string }) {
           {article.category}
         </Link>
         <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mt-2 mb-4">{article.title}</h1>
-        <div className="flex flex-wrap items-center text-neutral-600 dark:text-neutral-400">
-          <span>By {article.author}</span>
-          <span className="mx-2">•</span>
+        <div className="flex flex-wrap items-center text-neutral-600 dark:text-neutral-400 mb-4">
           <span>{formattedDate}</span>
           <span className="mx-2">•</span>
           <span>{readingTime}</span>
         </div>
+
+        {/* Author Card (Compact) */}
+        <AuthorCard authorName={article.author} variant="compact" />
       </div>
 
       {/* Featured Image */}
@@ -197,6 +199,12 @@ export default function ArticleClientPage({ slug }: { slug: string }) {
                 />
               </div>
             </div>
+
+            {/* Full Author Card */}
+            <div className="mt-10">
+              <h3 className="text-xl font-bold mb-4">About the Author</h3>
+              <AuthorCard authorName={article.author} variant="full" />
+            </div>
           </div>
         </div>
       </div>
@@ -246,10 +254,12 @@ export default function ArticleClientPage({ slug }: { slug: string }) {
                         {relatedArticle.title}
                       </Link>
                     </h3>
-                    <div className="text-sm text-neutral-600 dark:text-neutral-400 mb-3 flex items-center">
-                      <span className="mr-2">By {relatedArticle.author}</span>
-                      <span>•</span>
-                      <span className="ml-2">{getReadingTime(relatedArticle.content.substring(0, 200))}</span>
+                    <div className="mb-3">
+                      <AuthorCard
+                        authorName={relatedArticle.author}
+                        variant="compact"
+                        className="text-sm"
+                      />
                     </div>
                     <div className="mt-auto pt-3">
                       <Link
