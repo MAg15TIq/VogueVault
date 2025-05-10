@@ -1,0 +1,73 @@
+/* Ad Space Removal Styles */
+
+/* Hide all ad containers except autorelaxed */
+.ad-container:not(.autorelaxed-container) {
+  display: none !important;
+  height: 0 !important;
+  overflow: hidden !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Make sure the autorelaxed ad is visible */
+.autorelaxed-container {
+  display: block !important;
+  margin: 2rem 0;
+}
+
+/* Remove any min-height requirements that might create empty spaces */
+.ad-container ins.adsbygoogle {
+  min-height: 0 !important;
+}
+
+/* Hide ad sections that aren't for autorelaxed ads */
+section:has(.ad-container:not(.autorelaxed-container)) {
+  display: none !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Ensure the autorelaxed ad section is visible */
+section:has(.autorelaxed-container) {
+  display: block !important;
+}
+
+/* Fix for sidebar ads */
+.sticky:has(.ad-container:not(.autorelaxed-container)) {
+  display: none !important;
+}
+
+/* Fallback for browsers that don't support :has() */
+/* Target specific ad sections by their position in the layout */
+.mb-16 .ad-container:not(.autorelaxed-container),
+.mb-8 .ad-container:not(.autorelaxed-container),
+.my-6 .ad-container:not(.autorelaxed-container),
+.my-8 .ad-container:not(.autorelaxed-container) {
+  display: none !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Hide specific ad sections */
+section.mb-16:not(:has(.autorelaxed-ad-section)) {
+  display: none !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Ensure content flows properly without ads */
+.prose > div:empty {
+  display: none !important;
+}
+
+/* Fix grid layout when sidebar is hidden */
+.grid.grid-cols-1.lg\:grid-cols-4 > .hidden.lg\:block {
+  display: none !important;
+}
+
+.grid.grid-cols-1.lg\:grid-cols-4 > .lg\:col-span-3 {
+  grid-column: span 4 / span 4 !important;
+}

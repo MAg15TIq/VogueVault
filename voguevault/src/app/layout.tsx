@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Inter, Roboto_Mono, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import "../styles/cursor.css";
+import "../styles/adSpaceRemoval.css";
 import Script from "next/script";
 
 // Import layout components

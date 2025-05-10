@@ -275,6 +275,11 @@ export default function Home() {
         <AdManager type="vertical" />
       </section>
 
+      {/* AutoRelaxed Ad Section - This is the only ad that will be visible */}
+      <section className="mb-16">
+        <AdManager type="autorelaxed" className="autorelaxed-ad-section" />
+      </section>
+
       {/* Social Proof & Testimonials Section */}
       <section className="mb-16">
         <div className="text-center mb-10">

@@ -214,6 +214,11 @@ export default function ArticleClientPage({ slug }: { slug: string }) {
         <CommentSection articleId={article.id.toString()} />
       </div>
 
+      {/* AutoRelaxed Ad Section - This is the only ad that will be visible */}
+      <section className="mt-16 mb-16">
+        <AdManager type="autorelaxed" className="autorelaxed-ad-section" />
+      </section>
+
       {/* Enhanced Related Articles Section */}
       {relatedArticles.length > 0 && (
         <section className="mt-16 bg-neutral-50 dark:bg-neutral-900 py-12 px-4 md:px-8 rounded-xl">

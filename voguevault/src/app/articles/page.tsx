@@ -232,6 +232,11 @@ export default function ArticlesPage() {
         <AdManager type="article" />
       </div>
 
+      {/* AutoRelaxed Ad Section - This is the only ad that will be visible */}
+      <div className="mt-8 mb-8">
+        <AdManager type="autorelaxed" className="autorelaxed-ad-section" />
+      </div>
+
       {/* Results Count */}
       {filteredArticles.length > 0 && (
         <div className="mt-8 text-center text-neutral-600 dark:text-neutral-400">

@@ -5,8 +5,9 @@ import HorizontalAd from './HorizontalAd';
 import VerticalAd from './VerticalAd';
 import SidebarAd from './SidebarAd';
 import InArticleAd from './InArticleAd';
+import AutoRelaxedAd from './AutoRelaxedAd';
 
-type AdType = 'article' | 'horizontal' | 'vertical' | 'sidebar' | 'in-article';
+type AdType = 'article' | 'horizontal' | 'vertical' | 'sidebar' | 'in-article' | 'autorelaxed';
 
 interface AdManagerProps {
   type: AdType;
@@ -26,13 +27,20 @@ const AdManager: React.FC<AdManagerProps> = ({ type, className = '' }) => {
         return <SidebarAd />;
       case 'in-article':
         return <InArticleAd />;
+      case 'autorelaxed':
+        return <AutoRelaxedAd />;
       default:
         return <ArticleAd />;
     }
   };
 
+  // Add a special class for autorelaxed ads to ensure they're visible
+  const containerClass = type === 'autorelaxed'
+    ? `ad-container autorelaxed-container ${className}`
+    : `ad-container ${className}`;
+
   return (
-    <div className={`ad-container ${className}`}>
+    <div className={containerClass}>
       {renderAd()}
     </div>
   );
