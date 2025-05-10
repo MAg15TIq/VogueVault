@@ -13,7 +13,7 @@ export interface Article {
     role: string;
     email: string;
   };
-  date: string;
+  publishDate: string;
   readTime: number;
   tags: string[];
 }
@@ -37,7 +37,7 @@ export const articlesData: Article[] = [
     category: 'fashion',
     image: 'https://i.imgur.com/example1.jpg',
     author: defaultAuthor,
-    date: '2023-01-15',
+    publishDate: '2023-01-15',
     readTime: 5,
     tags: ['fashion', 'trends', '2023']
   },
@@ -50,7 +50,7 @@ export const articlesData: Article[] = [
     category: 'beauty',
     image: 'https://i.imgur.com/example2.jpg',
     author: defaultAuthor,
-    date: '2023-02-10',
+    publishDate: '2023-02-10',
     readTime: 7,
     tags: ['beauty', 'skincare', 'routine']
   },
@@ -63,7 +63,7 @@ export const articlesData: Article[] = [
     category: 'lifestyle',
     image: 'https://i.imgur.com/example3.jpg',
     author: defaultAuthor,
-    date: '2023-03-05',
+    publishDate: '2023-03-05',
     readTime: 6,
     tags: ['lifestyle', 'mindfulness', 'wellness']
   },
@@ -76,7 +76,7 @@ export const articlesData: Article[] = [
     category: 'culture',
     image: 'https://i.imgur.com/example4.jpg',
     author: defaultAuthor,
-    date: '2023-04-20',
+    publishDate: '2023-04-20',
     readTime: 8,
     tags: ['culture', 'art', 'exhibitions']
   }
