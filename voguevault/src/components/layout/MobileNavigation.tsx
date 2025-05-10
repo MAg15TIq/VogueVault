@@ -127,7 +127,7 @@ const MobileNavigation = () => {
 
   return (
     <nav
-      className={`fixed bottom-0 left-0 right-0 bg-white dark:bg-neutral-900 border-t border-neutral-200 dark:border-neutral-700 md:hidden z-40 transition-transform duration-300 ${
+      className={`fixed bottom-0 left-0 right-0 bg-white dark:bg-neutral-900 border-t border-neutral-200 dark:border-neutral-700 md:hidden z-40 transition-transform duration-300 custom-cursor-active nav-container ${
         isVisible ? 'translate-y-0' : 'translate-y-full'
       }`}
     >
@@ -136,7 +136,7 @@ const MobileNavigation = () => {
           <Link
             key={item.name}
             href={item.href}
-            className={`flex flex-col items-center justify-center w-full h-full transition-colors rounded-lg py-1 ${
+            className={`flex flex-col items-center justify-center w-full h-full transition-colors rounded-lg py-1 nav-link ${
               isActive(item.href)
                 ? 'text-primary bg-neutral-100 dark:bg-neutral-800'
                 : 'text-neutral-600 dark:text-neutral-400 hover:text-primary dark:hover:text-primary hover:bg-neutral-50 dark:hover:bg-neutral-800'
