@@ -14,12 +14,206 @@
   }
 }
 
+/* Base Styles */
 body {
-  color: rgb(var(--foreground-rgb));
-  background: rgb(var(--background-rgb));
+  transition: background-color 0.3s ease, color 0.3s ease;
+  font-feature-settings: "rlig" 1, "calt" 1;
 }
 
-.dark body {
+/* Ensure text is visible in both modes */
+.dark .text-foreground {
   color: rgb(255, 255, 255);
-  background: rgb(26, 26, 26);
+}
+
+.dark .bg-background {
+  background-color: rgb(26, 26, 26);
+}
+
+/* Fix for button text visibility in light mode */
+button {
+  color: hsl(var(--button-text));
+}
+
+.dark button {
+  color: hsl(var(--button-text));
+}
+
+/* Ensure ghost buttons have visible text in light mode */
+.light button[class*="ghost"] {
+  color: hsl(var(--foreground));
+}
+
+/* Ensure outline buttons have visible text in light mode */
+.light button[class*="outline"] {
+  color: hsl(var(--foreground));
+}
+
+/* Custom Scrollbar - VogueVaults style */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--background));
+  border-radius: 100px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted));
+  border-radius: 100px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted-foreground));
+}
+
+/* VogueVaults-style heading styles */
+.article-heading {
+  @apply text-2xl font-bold font-serif mb-6 pb-2 border-b border-primary/30 text-foreground relative;
+}
+
+.article-heading::before {
+  content: '';
+  @apply absolute -left-4 top-1/2 transform -translate-y-1/2 w-2 h-8 bg-primary/80 rounded-r-md hidden md:block;
+}
+
+/* Hover Glow Effects */
+.hover-glow {
+  transition: all 0.3s ease;
+}
+
+.hover-glow:hover {
+  box-shadow: 0 0 15px rgba(var(--primary-rgb), 0.5);
+  transform: translateY(-2px);
+}
+
+/* Button Hover Effects */
+.btn-hover-effect {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-hover-effect::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+}
+
+.btn-hover-effect:hover::after {
+  transform: translateX(100%);
+}
+
+/* Page Transitions */
+.page-enter {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.page-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+.page-exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.page-exit-active {
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+/* Custom Selection */
+::selection {
+  background-color: hsl(var(--primary) / 0.2);
+  color: hsl(var(--primary));
+}
+
+
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 215 25% 27%;
+    --card: 0 0% 100%;
+    --card-foreground: 215 25% 27%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 25% 27%;
+    --primary: 215 74% 40%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 215 25% 27%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215 25% 40%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 215 25% 27%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 215 74% 40%;
+    --radius: 0.75rem;
+    /* Ensure button text is visible in light mode */
+    --button-text: 215 25% 27%;
+  }
+
+  .dark {
+    --background: 215 28% 17%;
+    --foreground: 210 40% 98%;
+    --card: 215 25% 27%;
+    --card-foreground: 210 40% 98%;
+    --popover: 215 25% 27%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 210 40% 98%;
+    --primary-foreground: 215 25% 27%;
+    --secondary: 215 25% 27%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 215 25% 27%;
+    --muted-foreground: 215 20% 75%; /* Improved contrast for better readability */
+    --accent: 215 25% 27%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 215 25% 27%;
+    --input: 215 25% 27%;
+    --ring: 210 40% 98%;
+    --button-text: 210 40% 98%; /* Ensure button text is visible in dark mode */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  /* VogueVaults-style article typography */
+  .prose h2 {
+    @apply text-2xl font-bold font-serif mb-6 pb-2 border-b border-primary/30 text-foreground relative;
+  }
+
+  .prose h2::before {
+    content: '';
+    @apply absolute -left-4 top-1/2 transform -translate-y-1/2 w-2 h-8 bg-primary/80 rounded-r-md hidden md:block;
+  }
+
+  .prose h3 {
+    @apply text-xl font-semibold font-serif mb-4 text-primary/90;
+  }
+
+  .prose p {
+    @apply mb-4 leading-relaxed;
+  }
 }

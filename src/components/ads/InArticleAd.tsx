@@ -11,7 +11,7 @@ const InArticleAd = () => {
   return (
     <div className="my-8 text-center">
       <AdSenseAdUnit
-        adSlot="4567890123" // Replace with your actual in-article ad slot
+        adSlot="4567890123" // In-article ad slot
         adFormat="fluid"
         layout="in-article"
         style={{ display: 'block' }}

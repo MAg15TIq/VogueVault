@@ -16,9 +16,12 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
 
   // Initialize theme from localStorage or system preference
   useEffect(() => {
+    // Only run on client-side
+    if (typeof window === 'undefined') return;
+
     // Check if there's a saved preference in localStorage
     const savedTheme = localStorage.getItem('theme') as Theme | null;
-    
+
     if (savedTheme) {
       setTheme(savedTheme);
     } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
@@ -29,12 +32,19 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
 
   // Update document when theme changes
   useEffect(() => {
+    // Only run on client-side
+    if (typeof window === 'undefined') return;
+
+    const root = document.documentElement;
+
     if (theme === 'dark') {
-      document.documentElement.classList.add('dark');
+      root.classList.add('dark');
+      root.classList.remove('light');
     } else {
-      document.documentElement.classList.remove('dark');
+      root.classList.remove('dark');
+      root.classList.add('light');
     }
-    
+
     // Save preference to localStorage
     localStorage.setItem('theme', theme);
   }, [theme]);

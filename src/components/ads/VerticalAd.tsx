@@ -11,7 +11,7 @@ const VerticalAd = () => {
   return (
     <div className="my-6 text-center">
       <AdSense
-        adSlot="3456789012" // Replace with your actual vertical ad slot
+        adSlot="3456789012" // Vertical ad slot
         adFormat="vertical"
         style={{ display: 'block', minHeight: '600px' }}
       />

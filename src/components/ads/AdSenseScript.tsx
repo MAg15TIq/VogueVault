@@ -13,9 +13,6 @@ import { ADSENSE_PUBLISHER_ID } from './AdSense';
 const AdSenseScript = () => {
   return (
     <>
-      {/* Meta tag for AdSense verification */}
-      <meta name="google-adsense-account" content={ADSENSE_PUBLISHER_ID} />
-
       {/* AdSense script */}
       <Script
         id="google-adsense-script"

@@ -11,7 +11,7 @@ const SidebarAd = () => {
   return (
     <div className="my-6 text-center">
       <AdSense
-        adSlot="5678901234" // Replace with your actual sidebar ad slot
+        adSlot="5678901234" // Sidebar ad slot
         adFormat="auto"
         style={{ display: 'block', minHeight: '250px' }}
       />

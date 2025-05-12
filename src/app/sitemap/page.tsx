@@ -3,8 +3,8 @@ import Breadcrumbs from '@/components/ui/Breadcrumbs';
 import { articlesData } from '@/data/articlesData';
 
 export const metadata = {
-  title: 'Sitemap - VogueVault',
-  description: 'Sitemap for VogueVault - Your premier destination for fashion trends, lifestyle tips, and cultural insights.',
+  title: 'Sitemap - VogueVaults',
+  description: 'Sitemap for VogueVaults - Your premier destination for fashion trends, lifestyle tips, and cultural insights.',
 };
 
 export default function SitemapPage() {
@@ -35,7 +35,7 @@ export default function SitemapPage() {
       <div className="mb-12 text-center">
         <h1 className="text-4xl md:text-5xl font-bold mb-4">Sitemap</h1>
         <p className="text-lg text-neutral-600 dark:text-neutral-300">
-          A complete map of all pages on VogueVault
+          A complete map of all pages on VogueVaults
         </p>
       </div>
 

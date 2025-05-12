@@ -1,31 +1,88 @@
-export default function Home() {
-  return (
-    <div className="flex flex-col items-center justify-center min-h-screen py-2">
-      <main className="flex flex-col items-center justify-center flex-1 px-4 sm:px-20 text-center">
-        <h1 className="text-4xl sm:text-6xl font-bold mb-4">
-          Welcome to <span className="text-accent">VogueVault</span>
-        </h1>
-        <p className="text-xl mb-8">
-          Your destination for fashion, beauty, lifestyle, and culture.
-        </p>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl">
-          <CategoryCard title="Fashion" />
-          <CategoryCard title="Beauty" />
-          <CategoryCard title="Lifestyle" />
-          <CategoryCard title="Culture" />
-        </div>
-      </main>
-    </div>
-  );
-}
+import { Metadata } from 'next';
+import HeroSection from '@/components/home/HeroSection';
+import FeaturedArticles from '@/components/home/FeaturedArticles';
+import CategorySection from '@/components/home/CategorySection';
+import Newsletter from '@/components/common/Newsletter';
+import { articlesData } from '@/data/articlesData';
 
-function CategoryCard({ title }: { title: string }) {
+export const metadata: Metadata = {
+  title: 'VogueVaults - Fashion, Beauty, Lifestyle & Culture',
+  description: 'Discover the latest trends in fashion, beauty, lifestyle, and culture at VogueVaults.',
+};
+
+export default function Home() {
+  // Get featured article for hero section
+  const featuredArticle = articlesData[0]; // Using the first article as featured
+
+  // Get articles for featured section (excluding the hero article)
+  const featuredArticles = articlesData.slice(1, 7);
+
+  // Get fashion articles
+  const fashionArticles = articlesData.filter(
+    (article) => article.category === 'fashion'
+  );
+
+  // Get beauty articles
+  const beautyArticles = articlesData.filter(
+    (article) => article.category === 'beauty'
+  );
+
+  // Get lifestyle articles
+  const lifestyleArticles = articlesData.filter(
+    (article) => article.category === 'lifestyle'
+  );
+
+  // Get culture articles
+  const cultureArticles = articlesData.filter(
+    (article) => article.category === 'culture'
+  );
+
   return (
-    <div className="border border-gray-200 dark:border-gray-700 rounded-lg p-6 hover:shadow-lg transition-shadow">
-      <h2 className="text-2xl font-semibold mb-2">{title}</h2>
-      <p className="text-gray-600 dark:text-gray-300">
-        Explore our {title.toLowerCase()} articles and stay updated with the latest trends.
-      </p>
-    </div>
+    <>
+      {/* Hero Section */}
+      <HeroSection featuredArticle={featuredArticle} />
+
+      {/* Featured Articles */}
+      <FeaturedArticles articles={featuredArticles} />
+
+      {/* Fashion Section */}
+      {fashionArticles.length > 0 && (
+        <CategorySection
+          title="Fashion"
+          articles={fashionArticles}
+          viewAllLink="/categories/fashion"
+        />
+      )}
+
+      {/* Newsletter Section */}
+      <Newsletter />
+
+      {/* Beauty Section */}
+      {beautyArticles.length > 0 && (
+        <CategorySection
+          title="Beauty"
+          articles={beautyArticles}
+          viewAllLink="/categories/beauty"
+        />
+      )}
+
+      {/* Lifestyle Section */}
+      {lifestyleArticles.length > 0 && (
+        <CategorySection
+          title="Lifestyle"
+          articles={lifestyleArticles}
+          viewAllLink="/categories/lifestyle"
+        />
+      )}
+
+      {/* Culture Section */}
+      {cultureArticles.length > 0 && (
+        <CategorySection
+          title="Culture"
+          articles={cultureArticles}
+          viewAllLink="/categories/culture"
+        />
+      )}
+    </>
   );
 }

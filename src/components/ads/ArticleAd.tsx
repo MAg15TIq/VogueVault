@@ -11,7 +11,7 @@ const ArticleAd = () => {
   return (
     <div className="my-6 text-center">
       <AdSense
-        adSlot="1234567890" // Replace with your actual article bottom ad slot
+        adSlot="1234567890" // Article bottom ad slot
         adFormat="auto"
         style={{ display: 'block', minHeight: '250px' }}
       />

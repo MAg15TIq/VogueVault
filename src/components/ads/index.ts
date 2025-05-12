@@ -10,3 +10,4 @@ export { default as InArticleAd } from './InArticleAd';
 export { default as AutoRelaxedAd } from './AutoRelaxedAd';
 export { default as AdManager } from './AdManager';
 export { default as AdSenseVerification } from './AdSenseVerification';
+export { default as GrowMeScript } from './GrowMeScript';

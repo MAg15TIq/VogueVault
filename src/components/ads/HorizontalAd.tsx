@@ -11,7 +11,7 @@ const HorizontalAd = () => {
   return (
     <div className="my-6 text-center">
       <AdSense
-        adSlot="2345678901" // Replace with your actual horizontal ad slot
+        adSlot="2345678901" // Horizontal ad slot
         adFormat="horizontal"
         style={{ display: 'block', textAlign: 'center', minHeight: '90px' }}
       />

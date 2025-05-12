@@ -1,5 +1,7 @@
 'use client';
 
+import { ReactNode } from 'react';
+import AdErrorBoundary from './AdErrorBoundary';
 import ArticleAd from './ArticleAd';
 import HorizontalAd from './HorizontalAd';
 import VerticalAd from './VerticalAd';
@@ -12,9 +14,15 @@ type AdType = 'article' | 'horizontal' | 'vertical' | 'sidebar' | 'in-article' |
 interface AdManagerProps {
   type: AdType;
   className?: string;
+  children?: ReactNode;
 }
 
-const AdManager: React.FC<AdManagerProps> = ({ type, className = '' }) => {
+/**
+ * AdManager component
+ * Central component for managing different ad types
+ * Provides a consistent interface for all ad components
+ */
+const AdManager = ({ type, className = '', children }: AdManagerProps) => {
   const renderAd = () => {
     switch (type) {
       case 'article':
@@ -36,13 +44,16 @@ const AdManager: React.FC<AdManagerProps> = ({ type, className = '' }) => {
 
   // Add a special class for autorelaxed ads to ensure they're visible
   const containerClass = type === 'autorelaxed'
-    ? `ad-container autorelaxed-container ${className}`
-    : `ad-container ${className}`;
+    ? `ad-manager autorelaxed-container ${className}`
+    : `ad-manager ${className}`;
 
   return (
-    <div className={containerClass}>
-      {renderAd()}
-    </div>
+    <AdErrorBoundary>
+      <div className={containerClass}>
+        {renderAd()}
+        {children}
+      </div>
+    </AdErrorBoundary>
   );
 };
 
