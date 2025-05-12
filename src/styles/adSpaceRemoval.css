@@ -11,6 +11,11 @@
   margin: 2rem 0;
 }
 
+/* Specific styles for display ads */
+.display-ad-section {
+  margin: 2rem 0;
+}
+
 /* Base styling for AdSense ads */
 .ad-container ins.adsbygoogle {
   min-height: 90px; /* Minimum height for ads to prevent layout shifts */
@@ -23,6 +28,11 @@ section:has(.ad-container) {
 
 /* Ensure the autorelaxed ad section is visible */
 section:has(.autorelaxed-container) {
+  display: block;
+}
+
+/* Ensure the display ad section is visible */
+section:has(.display-ad-section) {
   display: block;
 }
 

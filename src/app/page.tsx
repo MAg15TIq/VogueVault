@@ -1,14 +1,14 @@
-import { Metadata } from 'next';
+'use client';
+
+import { AdManager } from '@/components/ads';
 import HeroSection from '@/components/home/HeroSection';
 import FeaturedArticles from '@/components/home/FeaturedArticles';
 import CategorySection from '@/components/home/CategorySection';
 import Newsletter from '@/components/common/Newsletter';
+import HomePageAds from '@/components/home/HomePageAds';
 import { articlesData } from '@/data/articlesData';
 
-export const metadata: Metadata = {
-  title: 'VogueVaults - Fashion, Beauty, Lifestyle & Culture',
-  description: 'Discover the latest trends in fashion, beauty, lifestyle, and culture at VogueVaults.',
-};
+// Metadata is now defined in layout.tsx since this is a client component
 
 export default function Home() {
   // Get featured article for hero section
@@ -54,6 +54,9 @@ export default function Home() {
         />
       )}
 
+      {/* Ad Section - Demonstrating both approaches */}
+      <HomePageAds />
+
       {/* Newsletter Section */}
       <Newsletter />
 
@@ -83,6 +86,19 @@ export default function Home() {
           viewAllLink="/categories/culture"
         />
       )}
+
+      {/* Bottom Ad Section */}
+      <section className="py-12">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-4">
+            <h2 className="text-xl font-medium mb-2">Sponsored Content</h2>
+          </div>
+          <div className="max-w-4xl mx-auto">
+            {/* Using AdManager for standard placement */}
+            <AdManager type="horizontal" />
+          </div>
+        </div>
+      </section>
     </>
   );
 }

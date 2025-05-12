@@ -8,6 +8,7 @@ export { default as VerticalAd } from './VerticalAd';
 export { default as SidebarAd } from './SidebarAd';
 export { default as InArticleAd } from './InArticleAd';
 export { default as AutoRelaxedAd } from './AutoRelaxedAd';
+export { default as DisplayAd } from './DisplayAd';
 export { default as AdManager } from './AdManager';
 export { default as AdSenseVerification } from './AdSenseVerification';
 export { default as GrowMeScript } from './GrowMeScript';

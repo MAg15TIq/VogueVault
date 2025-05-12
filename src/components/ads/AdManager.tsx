@@ -8,9 +8,10 @@ import VerticalAd from './VerticalAd';
 import SidebarAd from './SidebarAd';
 import InArticleAd from './InArticleAd';
 import AutoRelaxedAd from './AutoRelaxedAd';
+import DisplayAd from './DisplayAd';
 import ClientOnlyAd from './ClientOnlyAd';
 
-type AdType = 'article' | 'horizontal' | 'vertical' | 'sidebar' | 'in-article' | 'autorelaxed';
+type AdType = 'article' | 'horizontal' | 'vertical' | 'sidebar' | 'in-article' | 'autorelaxed' | 'display';
 
 interface AdManagerProps {
   type: AdType;
@@ -38,6 +39,8 @@ const AdManager = ({ type, className = '', children }: AdManagerProps) => {
         return <InArticleAd />;
       case 'autorelaxed':
         return <AutoRelaxedAd />;
+      case 'display':
+        return <DisplayAd />;
       default:
         return <ArticleAd />;
     }
