@@ -12,10 +12,12 @@ const nextConfig = {
     ],
     unoptimized: true,
   },
-  // Ensure output is properly configured for Vercel
+  // Ensure output is properly configured for Vercel deployment
   output: 'standalone',
   // Disable source maps in production to reduce bundle size
   productionBrowserSourceMaps: false,
+  // Add trailing slash to URLs
+  trailingSlash: true,
 };
 
 module.exports = nextConfig;
