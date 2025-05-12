@@ -99,7 +99,7 @@ const AdSenseAdUnit: React.FC<AdSenseAdUnitProps> = ({
         className={`ad-container ${className}`}
         data-ad-status={isAdLoaded ? 'loaded' : isVisible ? 'loading' : 'pending'}
       >
-        {isVisible && (
+        {isVisible && typeof window !== 'undefined' && (
           <ins
             className="adsbygoogle"
             style={style}

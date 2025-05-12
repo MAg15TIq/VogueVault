@@ -60,14 +60,16 @@ const AdSense: React.FC<AdSenseProps> = ({
   return (
     <AdErrorBoundary>
       <div ref={adRef} className={`ad-container ${className}`}>
-        <ins
-          className="adsbygoogle"
-          style={style}
-          data-ad-client={ADSENSE_PUBLISHER_ID}
-          data-ad-slot={adSlot}
-          data-ad-format={adFormat}
-          data-full-width-responsive={fullWidthResponsive ? 'true' : 'false'}
-        />
+        {typeof window !== 'undefined' && (
+          <ins
+            className="adsbygoogle"
+            style={style}
+            data-ad-client={ADSENSE_PUBLISHER_ID}
+            data-ad-slot={adSlot}
+            data-ad-format={adFormat}
+            data-full-width-responsive={fullWidthResponsive ? 'true' : 'false'}
+          />
+        )}
       </div>
     </AdErrorBoundary>
   );

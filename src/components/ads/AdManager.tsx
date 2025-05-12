@@ -8,6 +8,7 @@ import VerticalAd from './VerticalAd';
 import SidebarAd from './SidebarAd';
 import InArticleAd from './InArticleAd';
 import AutoRelaxedAd from './AutoRelaxedAd';
+import ClientOnlyAd from './ClientOnlyAd';
 
 type AdType = 'article' | 'horizontal' | 'vertical' | 'sidebar' | 'in-article' | 'autorelaxed';
 
@@ -50,7 +51,9 @@ const AdManager = ({ type, className = '', children }: AdManagerProps) => {
   return (
     <AdErrorBoundary>
       <div className={containerClass}>
-        {renderAd()}
+        <ClientOnlyAd>
+          {renderAd()}
+        </ClientOnlyAd>
         {children}
       </div>
     </AdErrorBoundary>

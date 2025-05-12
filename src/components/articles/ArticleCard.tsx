@@ -136,7 +136,7 @@ const ArticleCard = ({ article, variant = 'default', className }: ArticleCardPro
         <CardFooter className="pt-0 flex items-center justify-between">
           <div className="flex items-center space-x-2">
             <Avatar className="h-8 w-8">
-              <AvatarImage src={article.author.image} alt={article.author.name} unoptimized />
+              <AvatarImage src={article.author.image} alt={article.author.name} />
               <AvatarFallback>{getInitials(article.author.name)}</AvatarFallback>
             </Avatar>
             <div>
