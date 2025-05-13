@@ -36,7 +36,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head />
+      <head>
+        {/* AdSense script moved to head as recommended by Google */}
+        <AdSenseScript />
+      </head>
       <body className={`${inter.variable} ${playfair.variable} font-sans`}>
         <ThemeProvider>
           <CustomCursor />
@@ -46,8 +49,7 @@ export default function RootLayout({
             <Footer />
           </div>
         </ThemeProvider>
-        {/* Ad scripts moved inside body to prevent hydration issues */}
-        <AdSenseScript />
+        {/* Other scripts */}
         <GrowMeScript />
       </body>
     </html>
