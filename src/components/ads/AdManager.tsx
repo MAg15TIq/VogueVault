@@ -7,9 +7,11 @@ import HorizontalAd from './HorizontalAd';
 import VerticalAd from './VerticalAd';
 import SidebarAd from './SidebarAd';
 import InArticleAd from './InArticleAd';
-import AutoRelaxedAd from './AutoRelaxedAd';
+import NewAutoRelaxedAd from './NewAutoRelaxedAd';
+import NewDisplayAd from './NewDisplayAd';
+import ClientOnlyAd from './ClientOnlyAd';
 
-type AdType = 'article' | 'horizontal' | 'vertical' | 'sidebar' | 'in-article' | 'autorelaxed';
+type AdType = 'article' | 'horizontal' | 'vertical' | 'sidebar' | 'in-article' | 'autorelaxed' | 'display';
 
 interface AdManagerProps {
   type: AdType;
@@ -36,7 +38,9 @@ const AdManager = ({ type, className = '', children }: AdManagerProps) => {
       case 'in-article':
         return <InArticleAd />;
       case 'autorelaxed':
-        return <AutoRelaxedAd />;
+        return <NewAutoRelaxedAd />;
+      case 'display':
+        return <NewDisplayAd />;
       default:
         return <ArticleAd />;
     }
@@ -50,7 +54,9 @@ const AdManager = ({ type, className = '', children }: AdManagerProps) => {
   return (
     <AdErrorBoundary>
       <div className={containerClass}>
-        {renderAd()}
+        <ClientOnlyAd>
+          {renderAd()}
+        </ClientOnlyAd>
         {children}
       </div>
     </AdErrorBoundary>

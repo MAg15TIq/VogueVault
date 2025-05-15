@@ -1,3 +1,4 @@
+// Export all ad components
 export { default as AdSense, ADSENSE_PUBLISHER_ID } from './AdSense';
 export { default as AdSenseScript } from './AdSenseScript';
 export { default as AdSenseAdUnit } from './AdSenseAdUnit';
@@ -8,6 +9,12 @@ export { default as VerticalAd } from './VerticalAd';
 export { default as SidebarAd } from './SidebarAd';
 export { default as InArticleAd } from './InArticleAd';
 export { default as AutoRelaxedAd } from './AutoRelaxedAd';
+export { default as NewAutoRelaxedAd } from './NewAutoRelaxedAd';
+export { default as DisplayAd } from './DisplayAd';
+export { default as NewDisplayAd } from './NewDisplayAd';
+export { default as EnhancedDisplayAd } from './EnhancedDisplayAd';
 export { default as AdManager } from './AdManager';
 export { default as AdSenseVerification } from './AdSenseVerification';
 export { default as GrowMeScript } from './GrowMeScript';
+export { default as ClientOnlyAd } from './ClientOnlyAd';
+export { default as CustomAdContainer } from './CustomAdContainer';

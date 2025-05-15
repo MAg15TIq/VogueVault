@@ -1,31 +1,15 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import Script from 'next/script';
+import { ADSENSE_PUBLISHER_ID } from './AdSense';
 import AdErrorBoundary from './AdErrorBoundary';
 
-// Publisher ID should be defined as a constant for easy updates
-export const ADSENSE_PUBLISHER_ID = 'ca-pub-8215873816542659';
-
-interface AdSenseProps {
-  adSlot: string;
-  adFormat?: string;
-  fullWidthResponsive?: boolean;
-  style?: React.CSSProperties;
-  className?: string;
-}
-
 /**
- * AdSense component for displaying Google AdSense ads
- * Includes error handling and performance optimizations
+ * DisplayAd component
+ * Displays a new display ad unit
+ * Uses the exact code snippet provided by Google AdSense
  */
-const AdSense: React.FC<AdSenseProps> = ({
-  adSlot,
-  adFormat = 'auto',
-  fullWidthResponsive = true,
-  style = { display: 'block' },
-  className = ''
-}) => {
+const DisplayAd = () => {
   const adRef = useRef<HTMLDivElement>(null);
   const [isAdLoaded, setIsAdLoaded] = useState(false);
   const [adError, setAdError] = useState<Error | null>(null);
@@ -36,7 +20,7 @@ const AdSense: React.FC<AdSenseProps> = ({
 
     // Check if AdSense script is loaded
     const checkAdSenseLoaded = () => {
-      return typeof window.adsbygoogle !== 'undefined';
+      return typeof (window as any).adsbygoogle !== 'undefined';
     };
 
     // Function to initialize the ad
@@ -87,25 +71,34 @@ const AdSense: React.FC<AdSenseProps> = ({
 
   // If there's an error, return null or a fallback
   if (adError) {
-    return null;
+    return (
+      <div className="my-8 text-center">
+        <div className="p-4 bg-muted/30 rounded-md">
+          <p className="text-sm text-muted-foreground">Ad could not be loaded</p>
+        </div>
+      </div>
+    );
   }
 
   return (
     <AdErrorBoundary>
-      <div ref={adRef} className={`ad-container ${className}`}>
-        {typeof window !== 'undefined' && (
-          <ins
-            className="adsbygoogle"
-            style={style}
-            data-ad-client={ADSENSE_PUBLISHER_ID}
-            data-ad-slot={adSlot}
-            data-ad-format={adFormat}
-            data-full-width-responsive={fullWidthResponsive ? 'true' : 'false'}
-          />
-        )}
+      <div
+        ref={adRef}
+        className="my-8 text-center display-ad-section"
+        data-ad-status={isAdLoaded ? 'loaded' : 'loading'}
+      >
+        {/* New Display Ad unit */}
+        <ins
+          className="adsbygoogle"
+          style={{ display: 'block' }}
+          data-ad-client={ADSENSE_PUBLISHER_ID}
+          data-ad-slot="3084720492"
+          data-ad-format="auto"
+          data-full-width-responsive="true"
+        />
       </div>
     </AdErrorBoundary>
   );
 };
 
-export default AdSense;
+export default DisplayAd;
