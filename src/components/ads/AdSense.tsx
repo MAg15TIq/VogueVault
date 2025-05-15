@@ -34,8 +34,13 @@ const AdSense: React.FC<AdSenseProps> = ({
     // Don't try to load ads on the server side
     if (typeof window === 'undefined') return;
 
-    // Wait a bit to ensure the ad script is loaded
-    const timer = setTimeout(() => {
+    // Check if AdSense script is loaded
+    const checkAdSenseLoaded = () => {
+      return typeof window.adsbygoogle !== 'undefined';
+    };
+
+    // Function to initialize the ad
+    const initializeAd = () => {
       try {
         // Initialize the ad
         // @ts-ignore - adsbygoogle is added by the external script
@@ -45,7 +50,35 @@ const AdSense: React.FC<AdSenseProps> = ({
         console.error('AdSense initialization error:', error);
         setAdError(error instanceof Error ? error : new Error('Failed to load ad'));
       }
-    }, 100);
+    };
+
+    // If AdSense is already loaded, initialize immediately
+    if (checkAdSenseLoaded()) {
+      initializeAd();
+      return;
+    }
+
+    // Otherwise, wait for it to load with a longer timeout
+    const timer = setTimeout(() => {
+      if (checkAdSenseLoaded()) {
+        initializeAd();
+      } else {
+        console.warn('AdSense script not loaded after timeout');
+        // Try one more time after a longer delay
+        const retryTimer = setTimeout(() => {
+          if (checkAdSenseLoaded()) {
+            initializeAd();
+          } else {
+            console.error('AdSense script failed to load');
+            setAdError(new Error('AdSense script failed to load'));
+          }
+        }, 2000); // 2 second retry
+
+        return () => {
+          clearTimeout(retryTimer);
+        };
+      }
+    }, 500); // Increased from 100ms to 500ms
 
     return () => {
       clearTimeout(timer);

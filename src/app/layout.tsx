@@ -39,6 +39,12 @@ export default function RootLayout({
       <head>
         {/* AdSense script moved to head as recommended by Google */}
         <AdSenseScript />
+        {/*
+          Note: We've removed any duplicate AdSenseScript components
+          to ensure the script is only loaded once.
+          The AdSenseScript component now includes both the main script
+          and the auto ads initialization code.
+        */}
       </head>
       <body className={`${inter.variable} ${playfair.variable} font-sans`}>
         <ThemeProvider>

@@ -1,7 +1,6 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
-import Script from 'next/script';
+import { useEffect, useRef, useState } from 'react';
 import { ADSENSE_PUBLISHER_ID } from './AdSense';
 import AdErrorBoundary from './AdErrorBoundary';
 
@@ -12,30 +11,82 @@ import AdErrorBoundary from './AdErrorBoundary';
  */
 const DisplayAd = () => {
   const adRef = useRef<HTMLDivElement>(null);
+  const [isAdLoaded, setIsAdLoaded] = useState(false);
+  const [adError, setAdError] = useState<Error | null>(null);
 
   useEffect(() => {
     // Don't try to load ads on the server side
     if (typeof window === 'undefined') return;
 
-    // Wait a bit to ensure the ad script is loaded
-    const timer = setTimeout(() => {
+    // Check if AdSense script is loaded
+    const checkAdSenseLoaded = () => {
+      return typeof (window as any).adsbygoogle !== 'undefined';
+    };
+
+    // Function to initialize the ad
+    const initializeAd = () => {
       try {
         // Initialize the ad
         // @ts-ignore - adsbygoogle is added by the external script
         (window.adsbygoogle = window.adsbygoogle || []).push({});
+        setIsAdLoaded(true);
       } catch (error) {
         console.error('AdSense initialization error:', error);
+        setAdError(error instanceof Error ? error : new Error('Failed to load ad'));
       }
-    }, 100);
+    };
+
+    // If AdSense is already loaded, initialize immediately
+    if (checkAdSenseLoaded()) {
+      initializeAd();
+      return;
+    }
+
+    // Otherwise, wait for it to load with a longer timeout
+    const timer = setTimeout(() => {
+      if (checkAdSenseLoaded()) {
+        initializeAd();
+      } else {
+        console.warn('AdSense script not loaded after timeout');
+        // Try one more time after a longer delay
+        const retryTimer = setTimeout(() => {
+          if (checkAdSenseLoaded()) {
+            initializeAd();
+          } else {
+            console.error('AdSense script failed to load');
+            setAdError(new Error('AdSense script failed to load'));
+          }
+        }, 2000); // 2 second retry
+
+        return () => {
+          clearTimeout(retryTimer);
+        };
+      }
+    }, 500); // Increased from 100ms to 500ms
 
     return () => {
       clearTimeout(timer);
     };
   }, []);
 
+  // If there's an error, return null or a fallback
+  if (adError) {
+    return (
+      <div className="my-8 text-center">
+        <div className="p-4 bg-muted/30 rounded-md">
+          <p className="text-sm text-muted-foreground">Ad could not be loaded</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <AdErrorBoundary>
-      <div ref={adRef} className="my-8 text-center display-ad-section">
+      <div
+        ref={adRef}
+        className="my-8 text-center display-ad-section"
+        data-ad-status={isAdLoaded ? 'loaded' : 'loading'}
+      >
         {/* New Display Ad unit */}
         <ins
           className="adsbygoogle"

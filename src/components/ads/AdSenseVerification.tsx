@@ -1,13 +1,14 @@
 'use client';
 
-import { ADSENSE_PUBLISHER_ID } from './AdSense';
-import AdSenseScript from './AdSenseScript';
-
 /**
  * AdSenseVerification component
- * This is a wrapper around AdSenseScript for backward compatibility
- * New code should use AdSenseScript directly
+ * This component is deprecated and no longer loads the AdSense script
+ * to avoid duplicate script loading.
+ *
+ * The AdSenseScript component is now loaded directly in the layout.tsx file.
+ * This component is kept for backward compatibility but doesn't render anything.
  */
 export default function AdSenseVerification() {
-  return <AdSenseScript />;
+  // Return null to avoid duplicate script loading
+  return null;
 }

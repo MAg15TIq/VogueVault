@@ -1,39 +1,41 @@
-/* Ad Display Styles */
+/* Ad Display Styles - Optimized for Google AdSense Policy Compliance */
 
-/* Common styles for all ad containers */
+/* Common styles for all ad containers - increased spacing for policy compliance */
 .ad-container {
   display: block;
-  margin: 2rem 0;
+  margin: 2.5rem 0; /* Increased from 2rem to 2.5rem for better spacing */
+  min-height: 90px; /* Minimum height to prevent layout shifts */
+  clear: both; /* Ensure ads don't float next to other content */
+  position: relative; /* For positioning status indicators */
 }
 
 /* Specific styles for autorelaxed ads */
 .autorelaxed-container {
-  margin: 2rem 0;
+  margin: 3rem 0; /* Increased margin for autorelaxed ads */
+  min-height: 250px; /* Taller minimum height for autorelaxed format */
 }
 
 /* Specific styles for display ads */
 .display-ad-section {
-  margin: 2rem 0;
+  margin: 3rem 0; /* Increased margin for display ads */
+  min-height: 90px; /* Minimum height to prevent layout shifts */
+  clear: both; /* Ensure ads don't float next to other content */
 }
 
 /* Base styling for AdSense ads */
-.ad-container ins.adsbygoogle {
+.ad-container ins.adsbygoogle,
+.display-ad-section ins.adsbygoogle {
   min-height: 90px; /* Minimum height for ads to prevent layout shifts */
+  background-color: transparent; /* Ensure background is transparent */
 }
 
-/* Ensure all ad sections are visible */
-section:has(.ad-container) {
-  display: block;
-}
-
-/* Ensure the autorelaxed ad section is visible */
+/* Add clear spacing around ad containers */
+section:has(.ad-container),
+section:has(.display-ad-section),
 section:has(.autorelaxed-container) {
   display: block;
-}
-
-/* Ensure the display ad section is visible */
-section:has(.display-ad-section) {
-  display: block;
+  padding: 1rem 0; /* Add padding around ad sections */
+  margin: 1rem 0; /* Add margin around ad sections */
 }
 
 /* Ensure content flows properly */
@@ -41,12 +43,62 @@ section:has(.display-ad-section) {
   display: none;
 }
 
-/* Grid layout for sidebar ads */
+/* Grid layout for sidebar ads - ensure proper spacing */
 .grid.grid-cols-1.lg\:grid-cols-4 > .hidden.lg\:block {
   display: block !important;
+  padding-left: 2rem; /* Add spacing between main content and sidebar */
 }
 
 /* Ensure main content has proper width with sidebar */
 .grid.grid-cols-1.lg\:grid-cols-4 > .lg\:col-span-3 {
   grid-column: span 3 / span 3;
+}
+
+/* Add status indicators for ads */
+[data-ad-status="loading"]::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  z-index: -1;
+}
+
+[data-ad-status="loaded"]::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  z-index: -1;
+}
+
+/* Ensure ads don't overlap with navigation or clickable elements */
+header + .ad-container,
+header + .display-ad-section,
+header + .autorelaxed-container {
+  margin-top: 3rem; /* Extra spacing after header */
+}
+
+.ad-container + footer,
+.display-ad-section + footer,
+.autorelaxed-container + footer {
+  margin-top: 3rem; /* Extra spacing before footer */
+}
+
+/* Ensure proper spacing between multiple ads */
+.ad-container + .ad-container,
+.display-ad-section + .display-ad-section,
+.autorelaxed-container + .autorelaxed-container,
+.ad-container + .display-ad-section,
+.display-ad-section + .ad-container,
+.ad-container + .autorelaxed-container,
+.autorelaxed-container + .ad-container,
+.display-ad-section + .autorelaxed-container,
+.autorelaxed-container + .display-ad-section {
+  margin-top: 4rem; /* Significant spacing between ads */
 }
