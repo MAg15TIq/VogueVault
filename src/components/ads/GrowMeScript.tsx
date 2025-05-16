@@ -22,11 +22,13 @@ const GrowMeScript = () => {
               (e.type="text/javascript"),
               (e.src="https://faves.grow.me/main.js"),
               (e.defer=!0),
-              e.setAttribute("data-grow-faves-site-id","U2l0Z");
-              document.head.appendChild(e);
+              e.setAttribute("data-grow-faves-site-id","U2l0ZTo0OTU5ZjE0OC04NDJlLTRmZTctOTc5NS0wYjAwNTM4NWM2Yzk=");
+              var t=document.getElementsByTagName("script")[0];
+              t.parentNode.insertBefore(e,t);
             })();
           `,
         }}
+        data-grow-initializer=""
       />
     </>
   );
