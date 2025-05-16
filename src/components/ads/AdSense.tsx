@@ -36,15 +36,15 @@ const AdSense: React.FC<AdSenseProps> = ({
 
     // Check if AdSense script is loaded
     const checkAdSenseLoaded = () => {
-      return typeof window.adsbygoogle !== 'undefined';
+      return typeof (window as any).adsbygoogle !== 'undefined';
     };
 
     // Function to initialize the ad
     const initializeAd = () => {
       try {
         // Initialize the ad
-        // @ts-ignore - adsbygoogle is added by the external script
-        (window.adsbygoogle = window.adsbygoogle || []).push({});
+        // adsbygoogle is added by the external script
+        ((window as any).adsbygoogle = (window as any).adsbygoogle || []).push({});
         setIsAdLoaded(true);
       } catch (error) {
         console.error('AdSense initialization error:', error);
