@@ -8,16 +8,21 @@ import Footer from '@/components/layout/Footer';
 import CustomCursor from '@/components/ui/CustomCursor';
 import { AdSenseScript, GrowMeScript } from '@/components/ads';
 
+// Add fallback options to prevent build failures when Google Fonts is unreachable
 const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
   display: 'swap',
+  fallback: ['system-ui', 'Arial', 'sans-serif'],
+  preload: false, // Disable preloading to prevent build failures
 });
 
 const playfair = Playfair_Display({
   subsets: ['latin'],
   variable: '--font-playfair',
   display: 'swap',
+  fallback: ['Georgia', 'Times New Roman', 'serif'],
+  preload: false, // Disable preloading to prevent build failures
 });
 
 export const metadata: Metadata = {

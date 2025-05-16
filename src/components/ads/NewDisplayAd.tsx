@@ -19,8 +19,8 @@ const NewDisplayAd = () => {
     const timer = setTimeout(() => {
       try {
         // Initialize the ad
-        // @ts-ignore - adsbygoogle is added by the external script
-        (window.adsbygoogle = window.adsbygoogle || []).push({});
+        // Use type assertion to avoid TypeScript errors
+        ((window as any).adsbygoogle = (window as any).adsbygoogle || []).push({});
       } catch (error) {
         console.error('AdSense initialization error:', error);
       }
