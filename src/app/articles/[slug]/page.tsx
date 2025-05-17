@@ -135,7 +135,7 @@ function extractStructuredContent(content: string) {
       title: getTitle(futureTrendsMatch[1]) || 'Future Trends',
       content: getContent(futureTrendsMatch[1])
     } : undefined,
-    conclusion: conclusionMatch ? conclusionMatch[1] : '<p>Conclusion content</p>'
+    conclusion: conclusionMatch ? getContent(conclusionMatch[1]) : '<p>Conclusion content</p>'
   };
 }
 
