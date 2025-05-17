@@ -18,6 +18,7 @@ interface AdSenseProps {
 /**
  * AdSense component for displaying Google AdSense ads
  * Includes error handling and performance optimizations
+ * Modified to prevent hydration errors by only rendering on client side
  */
 const AdSense: React.FC<AdSenseProps> = ({
   adSlot,
@@ -29,8 +30,12 @@ const AdSense: React.FC<AdSenseProps> = ({
   const adRef = useRef<HTMLDivElement>(null);
   const [isAdLoaded, setIsAdLoaded] = useState(false);
   const [adError, setAdError] = useState<Error | null>(null);
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
+    // Set mounted state to true when component mounts on client
+    setIsMounted(true);
+
     // Don't try to load ads on the server side
     if (typeof window === 'undefined') return;
 
@@ -90,19 +95,28 @@ const AdSense: React.FC<AdSenseProps> = ({
     return null;
   }
 
+  // Only render the ad on the client side to prevent hydration mismatch
+  if (!isMounted) {
+    return (
+      <div className={`ad-container ${className}`}>
+        <div className="p-4 bg-muted/10 rounded-md h-[250px]">
+          <p className="text-sm text-muted-foreground">Advertisement</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <AdErrorBoundary>
       <div ref={adRef} className={`ad-container ${className}`}>
-        {typeof window !== 'undefined' && (
-          <ins
-            className="adsbygoogle"
-            style={style}
-            data-ad-client={ADSENSE_PUBLISHER_ID}
-            data-ad-slot={adSlot}
-            data-ad-format={adFormat}
-            data-full-width-responsive={fullWidthResponsive ? 'true' : 'false'}
-          />
-        )}
+        <ins
+          className="adsbygoogle"
+          style={style}
+          data-ad-client={ADSENSE_PUBLISHER_ID}
+          data-ad-slot={adSlot}
+          data-ad-format={adFormat}
+          data-full-width-responsive={fullWidthResponsive ? 'true' : 'false'}
+        />
       </div>
     </AdErrorBoundary>
   );

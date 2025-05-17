@@ -8,13 +8,18 @@ import AdErrorBoundary from './AdErrorBoundary';
  * DisplayAd component
  * Displays a new display ad unit
  * Uses the exact code snippet provided by Google AdSense
+ * Modified to prevent hydration errors by only rendering on client side
  */
 const DisplayAd = () => {
   const adRef = useRef<HTMLDivElement>(null);
   const [isAdLoaded, setIsAdLoaded] = useState(false);
   const [adError, setAdError] = useState<Error | null>(null);
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
+    // Set mounted state to true when component mounts on client
+    setIsMounted(true);
+
     // Don't try to load ads on the server side
     if (typeof window === 'undefined') return;
 
@@ -75,6 +80,17 @@ const DisplayAd = () => {
       <div className="my-8 text-center">
         <div className="p-4 bg-muted/30 rounded-md">
           <p className="text-sm text-muted-foreground">Ad could not be loaded</p>
+        </div>
+      </div>
+    );
+  }
+
+  // Only render the ad on the client side to prevent hydration mismatch
+  if (!isMounted) {
+    return (
+      <div className="my-8 text-center display-ad-section">
+        <div className="p-4 bg-muted/10 rounded-md h-[250px]">
+          <p className="text-sm text-muted-foreground">Advertisement</p>
         </div>
       </div>
     );
