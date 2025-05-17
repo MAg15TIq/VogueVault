@@ -39,7 +39,8 @@ function convertToNewArticleFormat(article: Article): NewArticle {
     ? extractStructuredContent(article.content)
     : createDefaultSections(article.content);
 
-  return {
+  // Create the article object
+  const newArticle: NewArticle = {
     id: article.id,
     slug: article.slug,
     title: article.title,
@@ -74,6 +75,16 @@ function convertToNewArticleFormat(article: Article): NewArticle {
     },
     tags: article.tags
   };
+
+  // Add FAQ section if it exists
+  if (contentSections.faqItems && contentSections.faqItems.length > 0) {
+    newArticle.faq = {
+      id: 'faq',
+      items: contentSections.faqItems
+    };
+  }
+
+  return newArticle;
 }
 
 // Helper function to extract structured content or create default sections
@@ -98,11 +109,33 @@ function extractStructuredContent(content: string) {
   // Extract content without the title
   const getContent = (sectionContent: string | null) => {
     if (!sectionContent) return '<p>Content not available</p>';
-    return sectionContent.replace(/<h2>.*?<\/h2>/, '');
+    // Remove the h2 tag but keep the rest of the content
+    return sectionContent.replace(/<h2>.*?<\/h2>/, '').trim();
   };
 
   // Check for future trends section (optional)
   const futureTrendsMatch = content.match(/<section id="section-6">([\s\S]*?)<\/section>/);
+
+  // Extract FAQs section if it exists
+  const faqMatch = content.match(/<section id="faq">([\s\S]*?)<\/section>/);
+
+  // Process FAQ items if they exist
+  let faqItems = [];
+  if (faqMatch) {
+    const faqContent = faqMatch[1];
+    const questionMatches = faqContent.matchAll(/<h3>(.*?)<\/h3>\s*<p>(.*?)<\/p>/g);
+
+    if (questionMatches) {
+      for (const match of questionMatches) {
+        if (match.length >= 3) {
+          faqItems.push({
+            question: match[1].trim(),
+            answer: match[2].trim()
+          });
+        }
+      }
+    }
+  }
 
   return {
     backgroundContext: backgroundMatch ? {
@@ -135,7 +168,8 @@ function extractStructuredContent(content: string) {
       title: getTitle(futureTrendsMatch[1]) || 'Future Trends',
       content: getContent(futureTrendsMatch[1])
     } : undefined,
-    conclusion: conclusionMatch ? getContent(conclusionMatch[1]) : '<p>Conclusion content</p>'
+    conclusion: conclusionMatch ? getContent(conclusionMatch[1]) : '<p>Conclusion content</p>',
+    faqItems: faqItems.length > 0 ? faqItems : undefined
   };
 }
 
@@ -176,7 +210,8 @@ function createDefaultSections(content: string) {
       title: 'Future Trends',
       content: content.substring(sectionSize * 5, sectionSize * 6)
     },
-    conclusion: content.substring(sectionSize * 6)
+    conclusion: content.substring(sectionSize * 6),
+    faqItems: [] // Empty array for non-structured content
   };
 }
 
