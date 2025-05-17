@@ -53,6 +53,8 @@ import { essentialSkincareRoutineContent } from './articles/essentialSkincareRou
 import { seasonalSkincareTransitionsContent } from './articles/seasonalSkincareTransitions';
 import { antiAgingSkincareContent } from './articles/antiAgingSkincare';
 import { fashionTrends2023Content } from './articles/fashionTrends2023';
+import { mindfulnessDailyRoutineContent } from './articles/mindfulnessDailyRoutine';
+import { artExhibitions2023Content } from './articles/artExhibitions2023';
 
 // Lifestyle articles
 import { homeOrganizationGuideContent } from './articles/homeOrganizationGuide';
@@ -123,26 +125,28 @@ export const articlesData: Article[] = [
     title: 'Incorporating Mindfulness into Your Daily Routine',
     slug: 'mindfulness-daily-routine',
     excerpt: 'Simple ways to practice mindfulness and improve your mental well-being every day.',
-    content: 'Full article content goes here...',
+    content: mindfulnessDailyRoutineContent,
     category: 'lifestyle',
     image: '/images/articles/lifestyle/mindfulness.jpg',
     author: defaultAuthor,
     publishDate: '2023-03-05',
-    readTime: 6,
-    tags: ['lifestyle', 'mindfulness', 'wellness']
+    readTime: 14,
+    tags: ['lifestyle', 'mindfulness', 'wellness', 'mental health', 'meditation'],
+    structuredContent: true
   },
   {
     id: 'art-exhibitions-2023',
     title: 'Must-Visit Art Exhibitions Around the World in 2023',
     slug: 'art-exhibitions-2023',
     excerpt: 'A curated list of the most anticipated art exhibitions happening globally this year.',
-    content: 'Full article content goes here...',
+    content: artExhibitions2023Content,
     category: 'culture',
     image: '/images/articles/culture/art-gallery.jpg',
     author: defaultAuthor,
     publishDate: '2023-04-20',
-    readTime: 8,
-    tags: ['culture', 'art', 'exhibitions']
+    readTime: 16,
+    tags: ['culture', 'art', 'exhibitions', 'museums', 'galleries', 'travel'],
+    structuredContent: true
   },
   {
     id: 'mens-grooming-essentials',

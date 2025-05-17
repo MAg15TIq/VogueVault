@@ -283,7 +283,7 @@ const ArticleTemplate: React.FC<ArticleTemplateProps> = ({ article, relatedArtic
               <div className="flex items-center justify-between flex-wrap gap-4">
                 <div className="flex items-center space-x-4">
                   <Avatar className="h-12 w-12">
-                    <AvatarImage src={article.author.image} alt={article.author.name} />
+                    <AvatarImage src={article.author.image} alt={article.author.name} unoptimized />
                     <AvatarFallback>{article.author.name.charAt(0)}</AvatarFallback>
                   </Avatar>
                   <div>
@@ -416,7 +416,7 @@ const ArticleTemplate: React.FC<ArticleTemplateProps> = ({ article, relatedArtic
             <section className="mt-16 border-t pt-8">
               <div className="flex items-start gap-4">
                 <Avatar className="h-16 w-16">
-                  <AvatarImage src={article.author.image} alt={article.author.name} />
+                  <AvatarImage src={article.author.image} alt={article.author.name} unoptimized />
                   <AvatarFallback>{article.author.name.charAt(0)}</AvatarFallback>
                 </Avatar>
                 <div>
