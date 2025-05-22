@@ -1,12 +1,22 @@
 'use client';
 
+import Script from 'next/script';
+
 /**
  * AdSenseScript component
- * This component has been modified to return null as Google AdSense has been removed.
- * Kept for backward compatibility to prevent import errors.
+ * Loads the Google AdSense script for the entire application
+ * Should be included in the layout or a high-level component
  */
 const AdSenseScript = () => {
-  return null;
+  return (
+    <Script
+      id="google-adsense"
+      strategy="afterInteractive"
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5754219619080083"
+      crossOrigin="anonymous"
+    />
+  );
 };
 
 export default AdSenseScript;

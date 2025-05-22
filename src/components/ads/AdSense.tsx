@@ -2,8 +2,8 @@
 
 import React from 'react';
 
-// Keep the publisher ID export to prevent import errors in other components
-export const ADSENSE_PUBLISHER_ID = 'ca-pub-8215873816542659';
+// Export the publisher ID for use in other components
+export const ADSENSE_PUBLISHER_ID = 'ca-pub-5754219619080083';
 
 interface AdSenseProps {
   adSlot: string;

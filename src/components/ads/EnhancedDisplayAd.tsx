@@ -28,7 +28,7 @@ interface EnhancedDisplayAdProps {
  * - Intersection observer for viewport detection
  */
 const EnhancedDisplayAd = ({
-  adSlot = "3084720492", // Default to the display ad slot
+  adSlot = "3084720492", // Default display ad slot - update with your actual ad slot ID
   adFormat = 'auto',
   fullWidthResponsive = true,
   style = { display: 'block' },

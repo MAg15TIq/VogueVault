@@ -6,7 +6,7 @@ import { ThemeProvider } from '@/context/ThemeContext';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import CustomCursor from '@/components/ui/CustomCursor';
-import { GrowMeScript } from '@/components/ads';
+import { GrowMeScript, AdSenseScript } from '@/components/ads';
 
 // Add fallback options to prevent build failures when Google Fonts is unreachable
 const inter = Inter({
@@ -40,7 +40,8 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        {/* AdSense and Adsterra scripts have been removed */}
+        {/* Google AdSense script */}
+        <AdSenseScript />
       </head>
       <body className={`${inter.variable} ${playfair.variable} font-sans`}>
         <ThemeProvider>
