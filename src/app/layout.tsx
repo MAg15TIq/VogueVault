@@ -6,7 +6,7 @@ import { ThemeProvider } from '@/context/ThemeContext';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import CustomCursor from '@/components/ui/CustomCursor';
-import { AdSenseScript, GrowMeScript } from '@/components/ads';
+import { GrowMeScript } from '@/components/ads';
 
 // Add fallback options to prevent build failures when Google Fonts is unreachable
 const inter = Inter({
@@ -29,9 +29,7 @@ export const metadata: Metadata = {
   title: 'VogueVaults - Fashion, Beauty, Lifestyle & Culture',
   description: 'Discover the latest trends in fashion, beauty, lifestyle, and culture at VogueVaults.',
   keywords: 'fashion, beauty, lifestyle, culture, trends, style',
-  other: {
-    'google-adsense-account': 'ca-pub-8215873816542659',
-  },
+  other: {},
 };
 
 export default function RootLayout({
@@ -42,14 +40,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        {/* AdSense script moved to head as recommended by Google */}
-        <AdSenseScript />
-        {/*
-          Note: We've removed any duplicate AdSenseScript components
-          to ensure the script is only loaded once.
-          The AdSenseScript component now includes both the main script
-          and the auto ads initialization code.
-        */}
+        {/* AdSense and Adsterra scripts have been removed */}
       </head>
       <body className={`${inter.variable} ${playfair.variable} font-sans`}>
         <ThemeProvider>
@@ -60,7 +51,7 @@ export default function RootLayout({
             <Footer />
           </div>
         </ThemeProvider>
-        {/* Other scripts */}
+        {/* Only Grow by MediaVine script is loaded - Adsterra and AdSense have been removed */}
         <GrowMeScript />
       </body>
     </html>

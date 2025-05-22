@@ -15,6 +15,7 @@ export { default as NewDisplayAd } from './NewDisplayAd';
 export { default as EnhancedDisplayAd } from './EnhancedDisplayAd';
 export { default as AdManager } from './AdManager';
 export { default as AdSenseVerification } from './AdSenseVerification';
+export { default as AdsterraScript } from './AdsterraScript'; // Added placeholder for Adsterra
 export { default as GrowMeScript } from './GrowMeScript';
 export { default as ClientOnlyAd } from './ClientOnlyAd';
 export { default as CustomAdContainer } from './CustomAdContainer';

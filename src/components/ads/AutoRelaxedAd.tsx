@@ -1,22 +1,17 @@
 'use client';
 
-import AdSenseAdUnit from './AdSenseAdUnit';
+import React from 'react';
 
 /**
  * AutoRelaxedAd component
- * Displays an autorelaxed format ad unit
- * This is a special format that automatically adapts to the available space
- * and shows multiple ads in a relaxed, content-friendly format
+ * This component has been modified to return null as Google AdSense has been removed.
+ * Kept for backward compatibility to prevent import errors.
  */
 const AutoRelaxedAd = () => {
+  // Return an empty div to maintain layout but not load any ads
   return (
-    <div className="my-8 text-center autorelaxed-ad-section">
-      <AdSenseAdUnit
-        adSlot="8367415889" // Auto relaxed ad slot
-        adFormat="autorelaxed"
-        style={{ display: 'block' }}
-        loadOnlyWhenVisible={true}
-      />
+    <div style={{ display: 'none' }}>
+      {/* AdSense has been removed */}
     </div>
   );
 };
