@@ -1,6 +1,7 @@
 // Export all ad components
 export { default as AdSense, ADSENSE_PUBLISHER_ID } from './AdSense';
 export { default as AdSenseScript } from './AdSenseScript';
+export { default as AdSenseHeadScript } from './AdSenseHeadScript';
 export { default as AdSenseAdUnit } from './AdSenseAdUnit';
 export { default as AdErrorBoundary } from './AdErrorBoundary';
 export { default as ArticleAd } from './ArticleAd';

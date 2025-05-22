@@ -6,15 +6,20 @@ import Script from 'next/script';
  * AdSenseScript component
  * Loads the Google AdSense script for the entire application
  * Should be included in the layout or a high-level component
+ *
+ * This script must be placed between the <head></head> tags on each page of the site
+ * to enable Google AdSense ads.
  */
 const AdSenseScript = () => {
   return (
     <Script
       id="google-adsense"
-      strategy="afterInteractive"
-      async
-      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5754219619080083"
-      crossOrigin="anonymous"
+      strategy="beforeInteractive"
+      dangerouslySetInnerHTML={{
+        __html: `
+          (adsbygoogle = window.adsbygoogle || []).push({});
+        `,
+      }}
     />
   );
 };

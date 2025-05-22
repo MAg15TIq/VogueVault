@@ -1,17 +1,23 @@
 'use client';
 
 import React from 'react';
+import AdSense from './AdSense';
 
 /**
  * NewDisplayAd component
- * This component has been modified to return null as Google AdSense has been removed.
- * Kept for backward compatibility to prevent import errors.
+ * Displays an enhanced display ad using Google AdSense
+ * with improved styling and responsiveness
  */
 const NewDisplayAd = () => {
-  // Return an empty div to maintain layout but not load any ads
   return (
-    <div style={{ display: 'none' }}>
-      {/* AdSense has been removed */}
+    <div className="my-6 text-center">
+      <AdSense
+        adSlot="3084720492" // Display ad slot
+        adFormat="auto"
+        fullWidthResponsive={true}
+        style={{ display: 'block', minHeight: '250px', margin: '0 auto' }}
+        className="rounded-lg shadow-sm overflow-hidden"
+      />
     </div>
   );
 };
