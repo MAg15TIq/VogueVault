@@ -40,6 +40,15 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        {/* Google tag (gtag.js) */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-EL6CZ1FWSG"></script>
+        <script>
+          {`window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-EL6CZ1FWSG');`}
+        </script>
         {/* Google AdSense script - required between head tags on each page */}
         <AdSenseHeadScript />
       </head>
