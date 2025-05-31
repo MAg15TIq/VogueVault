@@ -7,6 +7,7 @@ import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import CustomCursor from '@/components/ui/CustomCursor';
 import { GrowMeScript, AdSenseHeadScript } from '@/components/ads';
+import AnalyticsDebugger from '@/components/analytics/AnalyticsDebugger';
 
 // Add fallback options to prevent build failures when Google Fonts is unreachable
 const inter = Inter({
@@ -63,6 +64,8 @@ export default function RootLayout({
         </ThemeProvider>
         {/* Both Google AdSense (in head) and Grow by MediaVine scripts are loaded - Adsterra has been removed */}
         <GrowMeScript />
+        {/* Analytics debugger - only shows in development */}
+        <AnalyticsDebugger />
       </body>
     </html>
   );

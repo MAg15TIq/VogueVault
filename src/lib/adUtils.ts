@@ -2,54 +2,42 @@
  * Utility functions for ad management and tracking
  */
 
+import { trackAdImpression as gaTrackAdImpression, trackAdClick as gaTrackAdClick } from './analytics';
+
 /**
  * Track ad impressions
- * This is a simple implementation that logs to console
- * In a real application, you would send this data to your analytics service
- * 
+ * Sends data to Google Analytics and logs to console in development
+ *
  * @param adType The type of ad that was displayed
  * @param adSlot The ad slot ID
  * @param location The location on the page where the ad was displayed
  */
 export const trackAdImpression = (adType: string, adSlot: string, location: string) => {
+  // Log to console in development
   if (process.env.NODE_ENV === 'development') {
     console.log(`Ad Impression: ${adType} (${adSlot}) at ${location}`);
   }
-  
-  // In a real implementation, you would send this data to your analytics service
-  // Example with Google Analytics:
-  // if (typeof window !== 'undefined' && window.gtag) {
-  //   window.gtag('event', 'ad_impression', {
-  //     ad_type: adType,
-  //     ad_slot: adSlot,
-  //     location: location
-  //   });
-  // }
+
+  // Send to Google Analytics
+  gaTrackAdImpression(adType, adSlot, location);
 };
 
 /**
  * Track ad clicks
- * This is a simple implementation that logs to console
- * In a real application, you would send this data to your analytics service
- * 
+ * Sends data to Google Analytics and logs to console in development
+ *
  * @param adType The type of ad that was clicked
  * @param adSlot The ad slot ID
  * @param location The location on the page where the ad was clicked
  */
 export const trackAdClick = (adType: string, adSlot: string, location: string) => {
+  // Log to console in development
   if (process.env.NODE_ENV === 'development') {
     console.log(`Ad Click: ${adType} (${adSlot}) at ${location}`);
   }
-  
-  // In a real implementation, you would send this data to your analytics service
-  // Example with Google Analytics:
-  // if (typeof window !== 'undefined' && window.gtag) {
-  //   window.gtag('event', 'ad_click', {
-  //     ad_type: adType,
-  //     ad_slot: adSlot,
-  //     location: location
-  //   });
-  // }
+
+  // Send to Google Analytics
+  gaTrackAdClick(adType, adSlot, location);
 };
 
 /**
