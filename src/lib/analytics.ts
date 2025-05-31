@@ -1,10 +1,10 @@
 /**
  * Google Analytics utility functions for VogueVault
- * Tracking ID: G-EL6CZ1FWSG
+ * Tracking ID: G-P2ESQDLDPG
  */
 
 // Google Analytics configuration
-export const GA_TRACKING_ID = 'G-EL6CZ1FWSG';
+export const GA_TRACKING_ID = 'G-P2ESQDLDPG';
 
 // Check if Google Analytics is available
 export const isGAAvailable = (): boolean => {

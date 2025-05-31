@@ -4,8 +4,8 @@
 This guide helps you verify that Google Analytics tracking is working correctly on your VogueVault website.
 
 **Your Google Analytics Configuration:**
-- **Tracking ID**: G-EL6CZ1FWSG
-- **Property ID**: G-PZESQ0LDPG
+- **Tracking ID**: G-P2ESQDLDPG
+- **Property ID**: G-P2ESQDLDPG
 - **Stream Name**: voguevaults.store
 - **Stream URL**: https://www.voguevaults.store/
 - **Stream ID**: 1127027074
@@ -73,7 +73,7 @@ If you're running the site in development mode:
 1. **Open Developer Tools** → **Network Tab**
 2. **Reload the page**
 3. **Look for these requests**:
-   - `gtag/js?id=G-EL6CZ1FWSG` (should return 200)
+   - `gtag/js?id=G-P2ESQDLDPG` (should return 200)
    - `collect` requests to `google-analytics.com` or `googletagmanager.com`
 
 ## Common Issues and Solutions
@@ -88,7 +88,7 @@ If you're running the site in development mode:
 
 **Solutions:**
 1. Disable ad blockers temporarily
-2. Verify tracking ID matches: G-EL6CZ1FWSG
+2. Verify tracking ID matches: G-P2ESQDLDPG
 3. Check browser console for JavaScript errors
 4. Test on production URL: https://www.voguevaults.store/
 
@@ -145,7 +145,7 @@ gtag('event', 'purchase', {
 ### Custom Dimensions Testing
 ```javascript
 // Test custom dimensions
-gtag('config', 'G-EL6CZ1FWSG', {
+gtag('config', 'G-P2ESQDLDPG', {
   custom_map: {
     'custom_parameter_1': 'user_type'
   }
@@ -162,7 +162,7 @@ console.log('gtag available:', typeof window.gtag === 'function');
 console.log('dataLayer:', window.dataLayer);
 
 // Send test page view
-gtag('config', 'G-EL6CZ1FWSG', {
+gtag('config', 'G-P2ESQDLDPG', {
   page_title: 'Test Page',
   page_location: window.location.href
 });
@@ -183,7 +183,7 @@ If you continue to experience issues:
 
 1. Check the browser console for errors
 2. Verify your Google Analytics property settings
-3. Ensure the tracking ID G-EL6CZ1FWSG is correct
+3. Ensure the tracking ID G-P2ESQDLDPG is correct
 4. Test with different browsers and devices
 5. Contact Google Analytics support if needed
 
