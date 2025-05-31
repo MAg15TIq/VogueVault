@@ -44,15 +44,21 @@ const AnalyticsDebugger = () => {
     return () => clearInterval(interval);
   }, []);
 
+  const testAnalytics = () => {
+    if (isGAAvailable()) {
+      trackEvent('test_event', 'debug', 'analytics_debugger_test');
+      console.log('Test event sent to Google Analytics');
+    } else {
+      console.log('Google Analytics not available for testing');
+    }
+  };
+
   // Don't render in production
   if (process.env.NODE_ENV !== 'development' || !status) {
     return null;
   }
 
-  const testEvent = () => {
-    trackEvent('test_event', 'debug', 'analytics_debugger');
-    alert('Test event sent! Check your browser console and Google Analytics Real-Time reports.');
-  };
+
 
   const runDebug = () => {
     debugGA();
@@ -110,7 +116,7 @@ const AnalyticsDebugger = () => {
             
             <div className="border-t pt-2 mt-2 space-y-1">
               <button
-                onClick={testEvent}
+                onClick={testAnalytics}
                 className="w-full bg-green-600 text-white px-2 py-1 rounded text-xs hover:bg-green-700"
               >
                 Send Test Event

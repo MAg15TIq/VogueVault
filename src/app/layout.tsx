@@ -8,6 +8,8 @@ import Footer from '@/components/layout/Footer';
 import CustomCursor from '@/components/ui/CustomCursor';
 import { GrowMeScript, AdSenseHeadScript } from '@/components/ads';
 import AnalyticsDebugger from '@/components/analytics/AnalyticsDebugger';
+import GoogleAnalytics from '@/components/analytics/GoogleAnalytics';
+import PageViewTracker from '@/components/analytics/PageViewTracker';
 
 // Add fallback options to prevent build failures when Google Fonts is unreachable
 const inter = Inter({
@@ -41,15 +43,6 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        {/* Google tag (gtag.js) */}
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-P2ESQDLDPG"></script>
-        <script>
-          {`window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-
-          gtag('config', 'G-P2ESQDLDPG');`}
-        </script>
         {/* Google AdSense script - required between head tags on each page */}
         <AdSenseHeadScript />
       </head>
@@ -62,6 +55,10 @@ export default function RootLayout({
             <Footer />
           </div>
         </ThemeProvider>
+        {/* Google Analytics - properly loaded using Next.js Script component */}
+        <GoogleAnalytics />
+        {/* Page view tracking for route changes */}
+        <PageViewTracker />
         {/* Both Google AdSense (in head) and Grow by MediaVine scripts are loaded - Adsterra has been removed */}
         <GrowMeScript />
         {/* Analytics debugger - only shows in development */}
